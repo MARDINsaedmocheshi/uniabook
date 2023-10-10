@@ -32,18 +32,18 @@ October 09, 2023
     <title>Uniabook | دانشگاه مقالات و کتاب</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{% static "img/logo-uniabook/3/uniabook-low-resolution-color-logo.png" %}">
+    <link rel="icon" type="image/x-icon" href="{% static "MainPage/img/logo-uniabook/3/uniabook-low-resolution-color-logo.png" %}">
 
     <!-- cdn  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- Global Stylesheets -->
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i" rel="stylesheet">
-    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/animate/animate.min.css">
-    <link rel="stylesheet" href="css/owl-carousel/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl-carousel/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link href="{% static "MainPage/css/bootstrap/bootstrap.min.css" %} " rel="stylesheet">
+    <link rel="stylesheet" href="{% static "MainPage/font-awesome-4.7.0/css/font-awesome.min.css" %} ">
+    <link rel="stylesheet" href="{% static "MainPage/css/animate/animate.min.css" %} ">
+    <link rel="stylesheet" href="{% static "MainPage/css/owl-carousel/owl.carousel.min.css" %} ">
+    <link rel="stylesheet" href="{% static "MainPage/css/owl-carousel/owl.theme.default.min.css" %} ">
+    <link rel="stylesheet" href="{% static "MainPage/css/style.css" %} ">
   
   </head>
 
@@ -56,6 +56,12 @@ October 09, 2023
   <div class="alert alert-danger text-center" role="alert">
         سایت در حال تکیمل شدن است ، از صبر شما بسیار متشکریم
   </div>
+  
+  <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+    <strong> سایت در حال تکیمل شدن است ، از صبر شما بسیار متشکریم</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
 
       <!-- Top Navbar  -->
       <div class="top-menubar">
@@ -93,7 +99,7 @@ October 09, 2023
 
           <!-- logo  -->
           <a class="navbar-brand smooth-scroll" href="index.html">
-            <img  width="150" height="80" src="img/logo-uniabook/3/uniabook-low-resolution-logo-color-on-transparent-background.png" alt="logo">
+            <img  width="150" height="80" src="{% static "MainPage/img/logo-uniabook/3/uniabook-low-resolution-logo-color-on-transparent-background.png" %} " alt="logo">
           </a> 
 
 
@@ -165,7 +171,7 @@ October 09, 2023
                       </div>
 
                       <div class="col-md-3 mega-menu-img m-auto text-center pl-0">
-                        <a href="#"><img src="img/nav articls/navarticle.png" alt="" class="img-fluid"></a>
+                        <a href="#"><img src="{% static "MainPage/img/nav articls/navarticle.png" %} " alt="" class="img-fluid"></a>
                       </div>
                       
                     </div>
@@ -195,7 +201,7 @@ October 09, 2023
                       </div>
 
                       <div class="col-md-5 mega-menu-img m-auto text-center pl-0">
-                        <a href="#"><img src="img/nav articls/navbook.png" alt="" class="img-fluid"></a>
+                        <a href="#"><img src="{% static "MainPage/img/nav articls/navbook.png" %} " alt="" class="img-fluid"></a>
                       </div>
                     </div>
                   </div>
@@ -354,7 +360,7 @@ LOGIN OR REGISTER
                   <div class="caption">
                     <i class="fa fa-chain"></i>
                   </div>
-                  <img src="img/news/news-11.jpg" class="img-fluid" alt="...">
+                  <img src="{% static "MainPage/img/news/news-11.jpg" %} " class="img-fluid" alt="...">
               </div>
               <h3>آنها باورت نمی کنند تا زمانی که انجامش دهی!</h3>
               <p class="desc">مهم ترین چیز در زندگی چیست؟ فقط یک چیز مهم است، شادی. هرگز، هرگز اجازه نده کسی شادی تو را از تو بگیرد. “کریستین بوبن” </p>
@@ -420,7 +426,7 @@ LOGIN OR REGISTER
               <div class="caption">
                 <i class="fa fa-chain"></i>
               </div>
-              <img src="img/news/news-1.jpg" class="img-fluid" alt="...">
+              <img src="{% static "MainPage/img/news/news-1.jpg" %} " class="img-fluid" alt="...">
           </div>
           <h3>مقالخ پایتونی</h3>
           <p class="desc">لورملورملورملورملورملورملورملورملورملورملورملورملورملورم</p>
@@ -432,7 +438,7 @@ LOGIN OR REGISTER
               <li class="breadcrumb-item active" aria-current="page">Data</li>
             </ol>
             <ol class="breadcrumb">
-              <img src="img/client/avatar-1.jpg" alt="Avatar" class="avatar1" style="float:left ;">
+              <img src="{% static "MainPage/img/client/avatar-1.jpg" %} " alt="Avatar" class="avatar1" style="float:left ;">
               <!-- <img src="img/client/avatar-1.jpg" class="rounded-circle" alt="Cinque Terre"> -->
               <li class="breadcrumb-item" style="padding-top: 14px;">نویسنده : <a href="#">  ماردین ساعدموچشی</a></li>
             </ol>
@@ -522,7 +528,7 @@ SERVICE-HOME
               <div class="row">
                 <!-- About Us -->
                 <div class="col-md-3 col-sm-6 ">
-                  <div><img src="img/logo-uniabook/3/uniabook-low-resolution-logo-white-on-transparent-background.png" alt="" class="img-fluid"></div>
+                  <div><img src="{% static "MainPage/img/logo-uniabook/3/uniabook-low-resolution-logo-white-on-transparent-background.png" %} " alt="" class="img-fluid"></div>
                   <ul class="list-unstyled comp-desc-f text-right">
                      <li><p>دانشگاه مقالات و کتاب به شما این امکان را میدهد که در طول سالهای تحصیلی خود با توانایی و مهارتهای خود بیشتر آشنا شوید و مهارتهای خود را شکوفا کنید</p></li> 
                   </ul><br> 
@@ -602,15 +608,15 @@ SERVICE-HOME
     </footer>
 
     <!--Global JavaScript -->
-    <script src="js/jquery/jquery.min.js"></script>
-    <script src="js/popper/popper.min.js"></script>
-    <script src="js/bootstrap/bootstrap.min.js"></script>
-    <script src="js/wow/wow.min.js"></script>
-    <script src="js/owl-carousel/owl.carousel.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="{% static "MainPage/js/jquery/jquery.min.js" %} "></script>
+    <script src="{% static "MainPage/js/popper/popper.min.js" %} "></script>
+    <script src="{% static "MainPage/js/bootstrap/bootstrap.min.js" %} "></script>
+    <script src="{% static "MainPage/js/wow/wow.min.js" %} "></script>
+    <script src="{% static "MainPage/js/owl-carousel/owl.carousel.min.js" %} "></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <!-- Plugin JavaScript -->
-    <script src="js/jquery-easing/jquery.easing.min.js"></script> 
-    <script src="js/custom.js"></script> 
+    <script src="{% static "MainPage/js/jquery-easing/jquery.easing.min.js" %} "></script> 
+    <script src="{% static "MainPage/js/custom.js" %} "></script> 
   </body>
 
 </html>
