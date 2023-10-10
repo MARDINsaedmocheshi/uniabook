@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+def MainPage_view(request):
+    # صفحه اصلی 
+    return render(request, "MainPage/index.html")
