@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import AlertModelMainPage, BookHomeModelMainPage
+from .models import AlertModelMainPage, BookHomeModelMainPage, ArticleHomeModelMainPage
 
 
 
@@ -29,3 +29,15 @@ class BookHomeMainPageAdmin(admin.ModelAdmin):
 admin.site.register(BookHomeModelMainPage, BookHomeMainPageAdmin)
 admin.site.title_article = 'مدیریت کتاب ها'
 # --------------------------------------------------
+
+
+# تنظیمات مقاله صفحه اصلی
+class ArticleHomeMainPageAdmin(admin.ModelAdmin):
+    list_display = ('title_ArticleHome' , 'slug_ArticleHome', 'status_ArticleHome', 'updated_ArticleHome', 'created_ArticleHome')
+    list_filter = (['publish_ArticleHome' ,'status_ArticleHome'] )
+    search_fields = ('title_ArticleHome' ,'Body_or_text_ArticleHome'  )
+    prepopulated_fields = {'slug_ArticleHome': ('title_ArticleHome',)}
+    ordering = ['-publish_ArticleHome' , 'status_ArticleHome']
+
+admin.site.register(ArticleHomeModelMainPage, ArticleHomeMainPageAdmin)
+admin.site.title_article = 'مدیریت کتاب ها'
