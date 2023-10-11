@@ -131,3 +131,67 @@ class BookHomeModelMainPage(models.Model):
 
 
 # ------------------------------------------------------------------------------------------------
+
+# Home page article | مقاله صفحه اصلی 
+class ArticleHomeModelMainPage(models.Model):
+  STATUS_CHOICES = (
+    ('d','پیش نویس'),
+    ('p','منتشر'),
+    ('p','تعداد کتاب محدود'),
+    ('f','کتاب موجود نیست'),
+    ('n','حذف خواهد شد'),
+    ('b','به زودی موجود خواهد شد'),
+    ('r','به دلیل عمل نکردن به قوانین سایت رد شد'),
+  )
+  ArticleHome_CHOICES= [
+   ("نوع مقاله", (
+           ("sar", "سایر"),
+           ("dns", "دانشجویی"),
+           ("ora", "مقاله پژوهشی"),
+           ("taa", "مقاله نظری"),
+           ("dor", "روش تحقیق"),
+           ("brr", "نقد کتاب"),
+           ("isi", "مقالات ISI"),
+           ("isc", "مقالات ISC"),
+           ("ara", "مقالات مروری"),
+           ("dst", "نوشته روزانه"),
+           ("cof", "مقالات کنفرانسی"),
+           ("scs", "مقالات اسکوپوس"),
+           ("rso", "گزارش‌ها و مطالعه مشاهدات"),
+           ("ass", "گزارش‌ها یا نامه‌های کوتاه"),
+
+
+       )
+   ),
+  ]
+
+  image_ArticleHome = models.ImageField(upload_to="ArticleHome_image", verbose_name = "عکس مقاله")
+  File_ArticleHome = models.FileField(upload_to="ArticleHome_file", verbose_name = "فایل مقاله")
+  title_ArticleHome = models.CharField(max_length=200, verbose_name = "نام مقاله" )
+  slug_ArticleHome = models.SlugField(max_length=100 , unique=True, verbose_name = "آدرس مقاله")
+#   نام مولف یا مولفان
+  Abstract_ArticleHome = models.TextField(verbose_name = "چکیده")
+  Key_word_ArticleHome = models.CharField(max_length=200, verbose_name = "کلید واژه" )
+  Introduction_ArticleHome = models.TextField(verbose_name = "مقدمه")
+  Body_or_text_ArticleHome = models.TextField(verbose_name = "بدنه یا متن")
+  Result_ArticleHome = models.TextField(verbose_name = "نتیجه")
+  References_ArticleHome = models.CharField(max_length=200, verbose_name = "منابع و ماخذ" )
+#   category_ArticleHome = models.ManyToManyField("Category", verbose_name="دسته بندی", related_name="articls")
+#  description_ArticleHome = RichTextField(blank=True, null=True,verbose_name = "توضیح کوتاه")
+  publish_ArticleHome = models.DateTimeField(default=timezone.now, verbose_name = "زمان انتشار مقاله")
+  created_ArticleHome = models.DateTimeField(auto_now_add=True, verbose_name = "مقاله کی ایجاد شد؟") 
+  updated_ArticleHome = models.DateTimeField(auto_now =True, verbose_name = "مقاله کی آپدیت شد؟")
+  status_ArticleHome = models.CharField(max_length=1,choices=STATUS_CHOICES,default = 'd', verbose_name = "  وضعیت انتشار مقاله" )
+  ArticleHome_type_ArticleHome = models.CharField(max_length=3,choices=ArticleHome_CHOICES, verbose_name = " نوع مقاله" )
+  is_sale_ArticleHome = models.BooleanField(default=False, verbose_name = "تخفیف ویژه")
+
+  class Meta:
+    verbose_name_plural = "مقاله ها"
+    verbose_name = "مقاله"
+    
+  def __str__(self):
+    return self.title_ArticleHome
+
+
+# ------------------------------------------------------------------------------------------------
+
