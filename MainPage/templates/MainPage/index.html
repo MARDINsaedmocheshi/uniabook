@@ -52,15 +52,18 @@ October 09, 2023
 <!-- HEADER -->
 <header>
 
-  <!-- alert  -->
+  <!-- alert  
   <div class="alert alert-danger text-center" role="alert">
         سایت در حال تکیمل شدن است ، از صبر شما بسیار متشکریم
   </div>
-  
+  -->
+
+{% for alert in Alertspagemain %}
   <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
-    <strong> سایت در حال تکیمل شدن است ، از صبر شما بسیار متشکریم</strong>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <strong>{{alert.title_alert}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
+ {% endfor %}
 
 
       <!-- Top Navbar  -->
@@ -354,27 +357,30 @@ LOGIN OR REGISTER
             <button class="btn btn-general btn-green" role="button">کل کتابها در کتابخانه</button>
             <button class="btn btn-general btn-white" role="button">کتابت رو پیدا نکردی؟</button>
           </div>
+
+{% for book in Bookspagemain %}
           <div class="col-md-3 col-sm-6 desc-comp-offer wow fadeInUp text-right" data-wow-delay="0.3s">
             <div class="desc-comp-offer-cont">
               <div class="thumbnail-blogs">
                   <div class="caption">
                     <i class="fa fa-chain"></i>
                   </div>
-                  <img src="{% static "MainPage/img/news/news-11.jpg" %} " class="img-fluid" alt="...">
+                  <img src="{{book.image_BookHome.url}}" class="img-fluid" alt="">
               </div>
-              <h3>آنها باورت نمی کنند تا زمانی که انجامش دهی!</h3>
-              <p class="desc">مهم ترین چیز در زندگی چیست؟ فقط یک چیز مهم است، شادی. هرگز، هرگز اجازه نده کسی شادی تو را از تو بگیرد. “کریستین بوبن” </p>
+              <h3>{{ book.title_BookHome }}</h3>
+              <p class="desc">{{ book.description_BookHome|truncatewords:10 }}</p>
               <!-- <a href="#"><i class="fa fa-arrow-circle-o-right"></i> بیشتر بخوانید</a> -->
               <hr>
               
-              <h6 style="text-align:center ;padding-left: 1%;color: lawngreen;"><i class="fa fa-money" aria-hidden="true" style="padding-right: 1%;color: rgb(38, 0, 252);"></i>Toman 14500  </h6>
+              <h6 style="text-align:center ;padding-left: 1%;color: lawngreen;"><i class="fa fa-money" aria-hidden="true" style="padding-right: 1%;color: rgb(38, 0, 252);"></i>Toman {{ book.price_of_the_book_BookHome }}  </h6>
               <!-- <h6 style="text-align:right ;padding-right: 1%;">تومان 14500</h6> -->
               <!-- <a href="#" style="text-align:right ;"><i class="fa fa-arrow-circle-o-right"></i> بیشتر بخوانید</a> -->
 
               
             </div>
-            
-          </div>          
+          </div> 
+{% endfor %}
+
           <div class="col-md-3 col-sm-6 desc-comp-offer wow fadeInUp" data-wow-delay="0.6s">
             <div class="desc-comp-offer-cont">
               <div class="thumbnail-blogs">
@@ -420,25 +426,26 @@ LOGIN OR REGISTER
         <button class="btn btn-general btn-white" role="button">میخوای مقاله بنویسی؟</button>
       </div>
 
+{% for article in Articlspagemain %}
       <div class="col-md-3 col-sm-6 desc-comp-offer wow fadeInUp text-center" data-wow-delay="0.4s">
         <div class="desc-comp-offer-cont">
           <div class="thumbnail-blogs">
               <div class="caption">
                 <i class="fa fa-chain"></i>
               </div>
-              <img src="{% static "MainPage/img/news/news-1.jpg" %} " class="img-fluid" alt="...">
+              <img src="{{ article.image_ArticleHome.url }}" class="img-fluid" alt="...">
           </div>
-          <h3>مقالخ پایتونی</h3>
-          <p class="desc">لورملورملورملورملورملورملورملورملورملورملورملورملورملورم</p>
-          <!-- <hr> -->
+          <h3>{{ article.title_ArticleHome }}</h3>
+          <p class="desc">{{ article.Body_or_text_ArticleHome|truncatewords:9 }}</p>
+          <!-- <hr> 
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
               <li class="breadcrumb-item"><a href="#">Library</a></li>
               <li class="breadcrumb-item active" aria-current="page">Data</li>
-            </ol>
+            </ol>-->
             <ol class="breadcrumb">
-              <img src="{% static "MainPage/img/client/avatar-1.jpg" %} " alt="Avatar" class="avatar1" style="float:left ;">
+              <img src="{% static "MainPage/img/client/avatar-2.jpg" %}" alt="Avatar" class="avatar1" style="float:left ;">
               <!-- <img src="img/client/avatar-1.jpg" class="rounded-circle" alt="Cinque Terre"> -->
               <li class="breadcrumb-item" style="padding-top: 14px;">نویسنده : <a href="#">  ماردین ساعدموچشی</a></li>
             </ol>
@@ -446,6 +453,7 @@ LOGIN OR REGISTER
           <!-- <a href="#"><i class="fa fa-arrow-circle-o-right"></i> بیشتر بخوانید</a> -->
         </div>
       </div>
+{% endfor %}
 
       <div class="col-md-3 col-sm-6 desc-comp-offer wow fadeInUp" data-wow-delay="0.6s">
         <div class="desc-comp-offer-cont">
