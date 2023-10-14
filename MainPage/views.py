@@ -13,3 +13,16 @@ def MainPage_view(request):
 
      }
     return render(request, "MainPage/index.html", cotext)
+
+
+
+def about_view(request):
+    cotext = {
+
+        # پیغام ها
+         "Alertspagemain" : AlertModelMainPage.objects.filter(status_alert="p"), # شیش تای آخر رو نشون میده
+
+     }
+    return render(request, "MainPage/about.html", cotext)
+
+

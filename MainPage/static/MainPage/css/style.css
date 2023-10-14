@@ -1,3 +1,4 @@
+{% load static %}
 /*
 author: Boostraptheme
 author URL: https://boostraptheme.com
@@ -751,7 +752,7 @@ p {
       } 
 
       .home-p.pages-head1 {
-        background: url(../img/img/banner-1.jpg) no-repeat;
+        background: url({% static "MainPage/img/img/banner-1.jpg" %}) no-repeat;
         background-size: cover;
         background-position: center center;
       }
