@@ -30,3 +30,11 @@ def detail_alert(request, slug):
         "detail_alert" : AlertModelMainPage.objects.get(slug_alert=slug)
     }
     return render(request, "MainPage/alert_detail.html", cotext)
+
+
+# صحفه لینک مربوطه هر پیغام
+def detail_book(request, slug):
+    cotext = {
+        "detail_book" : BookHomeModelMainPage.objects.get(slug_BookHome=slug)
+    }
+    return render(request, "MainPage/book_detail.html", cotext)
