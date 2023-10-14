@@ -61,7 +61,8 @@ October 09, 2023
 {% for alert in Alertspagemain %}
   <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
         <strong>{{alert.title_alert}}</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <a type="button" class="btn-success" href="{% url 'MainPage_app_name:alert_name' alert.slug_alert %}">دیدن صفحه</a>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" href="#"></button>
   </div>
  {% endfor %}
 

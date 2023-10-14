@@ -15,14 +15,18 @@ def MainPage_view(request):
     return render(request, "MainPage/index.html", cotext)
 
 
-
+# صفحه ما کی هستیم؟
 def about_view(request):
     cotext = {
-
         # پیغام ها
          "Alertspagemain" : AlertModelMainPage.objects.filter(status_alert="p"), # شیش تای آخر رو نشون میده
-
      }
     return render(request, "MainPage/about.html", cotext)
 
 
+# صحفه لینک مربوطه هر پیغام
+def detail_alert(request, slug):
+    cotext = {
+        "detail_alert" : AlertModelMainPage.objects.get(slug_alert=slug)
+    }
+    return render(request, "MainPage/alert_detail.html", cotext)
