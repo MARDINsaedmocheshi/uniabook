@@ -452,7 +452,9 @@ LOGIN OR REGISTER
               <li class="breadcrumb-item" style="padding-top: 14px;">نویسنده : <a href="#">  ماردین ساعدموچشی</a></li>
             </ol>
           </nav>
-          <!-- <a href="#"><i class="fa fa-arrow-circle-o-right"></i> بیشتر بخوانید</a> -->
+      <a  href="{% url 'MainPage_app_name:article_name' article.slug_ArticleHome %}"><i class="fa fa-arrow-circle-o-right"></i> بیشتر بخوانید</a>
+          <a type="button" class="btn-success" href="{% url 'MainPage_app_name:article_name' article.slug_ArticleHome %}">دیدن صفحه</a>
+
         </div>
       </div>
 {% endfor %}
