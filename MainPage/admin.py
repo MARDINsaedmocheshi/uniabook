@@ -6,7 +6,7 @@ from .models import AlertModelMainPage, BookHomeModelMainPage, ArticleHomeModelM
 
 # تنظیمات پیغام
 class AlertMainPageAdmin(admin.ModelAdmin):
-    list_display = ('title_alert' , 'slug_alert', 'status_alert', 'updated_alert', 'created_alert')
+    list_display = ('title_alert' , 'slug_alert', 'status_alert', 'jpublish', 'updated_alert', 'created_alert')
     list_filter = (['publish_alert' ,'status_alert'] )
     search_fields = ('title_alert' ,'description_alert'  )
     prepopulated_fields = {'slug_alert': ('title_alert',)}

@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone
-
+from extensions.utils import jalali_convert
 
 
 
@@ -61,6 +61,10 @@ class AlertModelMainPage(models.Model):
     
   def __str__(self):
     return self.title_alert
+
+  def jpublish(self):
+      return jalali_convert(self.publish_alert)
+  jpublish.short_description ="زمان انتشار"
 
 
 # ------------------------------------------------------------------------------------------------
