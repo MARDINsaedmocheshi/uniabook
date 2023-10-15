@@ -278,9 +278,18 @@ October 09, 2023
 
 
 
-<h1 class="display-6 text-center" >{{ detail_article.title_ArticleHome }}</h1>
+{% comment %} <h1 class="display-6 text-center" >{{ detail_article.title_ArticleHome }}</h1> {% endcomment %}
 
 
+{% for article in Articlspagemain %}
+    <h1 class="display-6 text-center" >عنوان :{{ article.title_ArticleHome }}</h1>
+    <h1 class="display-6 text-center" >نویسنده : {{ article.Body_or_text_ArticleHome }}</h1>
+
+      {% for cat in article.category_ArticleHome.all %}
+        <a href="">دسته بندی :{{ cat.title_category }}</a>
+      {% endfor %}
+
+{% endfor %}
 
 
 

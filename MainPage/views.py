@@ -42,7 +42,10 @@ def detail_alert(request, slug):
 # صحفه لینک مربوطه هر کتاب
 def detail_book(request, slug):
     cotext = {
-        "detail_book" : BookHomeModelMainPage.objects.get(slug_BookHome=slug)
+        # کتاب ها 
+        "Bookspagemain" : BookHomeModelMainPage.objects.filter(status_BookHome="p")[:6],
+        "detail_book" : BookHomeModelMainPage.objects.get(slug_BookHome=slug),
+        "category" : Category.objects.filter(status_category=True)
     }
     return render(request, "MainPage/book_detail.html", cotext)
 # -----------------------------------------------
@@ -51,7 +54,10 @@ def detail_book(request, slug):
 # صحفه لینک مربوطه هر مقاله
 def detail_article(request, slug):
     cotext = {
-        "detail_article" : ArticleHomeModelMainPage.objects.get(slug_ArticleHome=slug)
+        # مقاله ها     
+        "Articlspagemain" : ArticleHomeModelMainPage.objects.filter(status_ArticleHome="p")[:6],
+        "detail_article" : ArticleHomeModelMainPage.objects.get(slug_ArticleHome=slug),
+        "category" : Category.objects.filter(status_category=True)
     }
     return render(request, "MainPage/article_detail.html", cotext)
 # -----------------------------------------------

@@ -276,10 +276,16 @@ October 09, 2023
 
 
 
-
-
 {% comment %} <h1 class="display-6 text-center" >{{ detail_book.title_BookHome }}</h1> {% endcomment %}
+{% for book in Bookspagemain %}
+    <h1 class="display-6 text-center" >عنوان :{{ book.title_BookHome }}</h1>
+    <h1 class="display-6 text-center" >نویسنده : {{ book.name_of_the_translator_or_translators_BookHome }}</h1>
 
+      {% for cat in book.category_BookHome.all %}
+        <a href="">دسته بندی :{{ cat.title_category }}</a>
+      {% endfor %}
+
+{% endfor %}
 
 
 <!--====================================================
