@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import AlertModelMainPage, BookHomeModelMainPage, ArticleHomeModelMainPage
+from .models import AlertModelMainPage, BookHomeModelMainPage, ArticleHomeModelMainPage, Category
 
 def MainPage_view(request):
     cotext = {
@@ -13,23 +13,30 @@ def MainPage_view(request):
 
      }
     return render(request, "MainPage/index.html", cotext)
+# -----------------------------------------------
 
 
 # صفحه ما کی هستیم؟
 def about_view(request):
     cotext = {
         # پیغام ها
-         "Alertspagemain" : AlertModelMainPage.objects.filter(status_alert="p"), # شیش تای آخر رو نشون میده
+         "Alertspagemain" : AlertModelMainPage.objects.filter(status_alert="p"),
+         
      }
     return render(request, "MainPage/about.html", cotext)
+# -----------------------------------------------
 
 
 # صحفه لینک مربوطه هر پیغام
 def detail_alert(request, slug):
     cotext = {
-        "detail_alert" : AlertModelMainPage.objects.get(slug_alert=slug)
+        # پیغام ها
+        "Alertspagemain" : AlertModelMainPage.objects.filter(status_alert="p"),
+        "detail_alert" : AlertModelMainPage.objects.get(slug_alert=slug),
+        "category" : Category.objects.filter(status_category=True)
     }
     return render(request, "MainPage/alert_detail.html", cotext)
+# -----------------------------------------------
 
 
 # صحفه لینک مربوطه هر کتاب
@@ -38,6 +45,7 @@ def detail_book(request, slug):
         "detail_book" : BookHomeModelMainPage.objects.get(slug_BookHome=slug)
     }
     return render(request, "MainPage/book_detail.html", cotext)
+# -----------------------------------------------
 
 
 # صحفه لینک مربوطه هر مقاله
@@ -46,3 +54,4 @@ def detail_article(request, slug):
         "detail_article" : ArticleHomeModelMainPage.objects.get(slug_ArticleHome=slug)
     }
     return render(request, "MainPage/article_detail.html", cotext)
+# -----------------------------------------------

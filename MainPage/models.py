@@ -8,6 +8,24 @@ from extensions.utils import jalali_convert
 
 
 
+# Category
+class Category(models.Model):
+  parent = models.ForeignKey('self',  default=None, null=True,blank=True, on_delete=models.SET_NULL, related_name="children", verbose_name = "دسته بندی والد | زیر دسته")
+  title_category = models.CharField(max_length=200, verbose_name = "عنوان دسته بندی ")
+  slug_category = models.SlugField(max_length=100 , unique=True, verbose_name = "آدرس دسته بندی")
+  status_category = models.BooleanField(default=True, verbose_name="آیا نمایش داده شود؟")
+  position_category = models.IntegerField(verbose_name="پوزیشن")
+
+  class Meta:
+    verbose_name ="دسته بندی"
+    verbose_name_plural ="دسته بندی ها"
+    ordering = ['parent__id','position_category']
+
+  def __str__(self):
+    return self.title_category
+
+  # objects = CategoryManagers()  
+# -----------------------------------------------
 
 
 
@@ -45,7 +63,7 @@ class AlertModelMainPage(models.Model):
 
   title_alert = models.CharField(max_length=200, verbose_name = "عنوان پیغام")
   slug_alert = models.SlugField(max_length=100 , unique=True, verbose_name = "آدرس پیغام")
-#   category_alert = models.ManyToManyField("Category", verbose_name="دسته بندی", related_name="articls")
+  category_alert = models.ManyToManyField("Category", verbose_name="دسته بندی", related_name="alerts")
   description_alert = models.TextField(verbose_name = "توضیح کوتاه")
 #  description_alert = RichTextField(blank=True, null=True,verbose_name = "توضیح کوتاه")
   publish_alert = models.DateTimeField(default=timezone.now, verbose_name = "زمان انتشار پیغام")
@@ -61,7 +79,7 @@ class AlertModelMainPage(models.Model):
     
   def __str__(self):
     return self.title_alert
-
+# تقویم فارسی ! یادت نره برای کتاب و مقاله ننوشتمش
   def jpublish(self):
       return jalali_convert(self.publish_alert)
   jpublish.short_description ="زمان انتشار"

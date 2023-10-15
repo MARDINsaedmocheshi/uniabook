@@ -5,7 +5,7 @@ app_name = "MainPage_app_name"
 urlpatterns = [
     path('', MainPage_view, name="MainPage_name"),
     path('about/', about_view, name="about_name"),
-    path('<slug:slug>', detail_alert, name="alert_name"),
+    path('alert/<slug:slug>', detail_alert, name="alert_name"),
     path('book/<slug:slug>', detail_book, name="book_name"),
     path('article/<slug:slug>', detail_article, name="article_name"),
 
