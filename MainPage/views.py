@@ -64,6 +64,16 @@ def detail_article(request, slug):
 
 
 
+def category_Alert(request, slug):
+    cotext = {
+        # دسته بندی ها
+        "category" : get_object_or_404(Category, slug_category=slug, status_category=True),
+        # "category1" : Category.objects.filter(status_category=True)
+    }
+    return render(request, "MainPage/category_alerts.html", cotext)
+# -----------------------------------------------
+
+
 
 def category_books(request, slug):
     cotext = {

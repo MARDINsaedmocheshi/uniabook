@@ -1,0 +1,9 @@
+{% for alert in category.alerts.all %}
+
+
+<h1 class="display-6 text-center" >عنوان :{{ alert.title_alert }}</h1>
+{% for cat in alert.categore_published.all %}
+<a href="">دسته بندی :{{ cat.title_category }}</a>
+{% endfor %}
+
+{% endfor %}
