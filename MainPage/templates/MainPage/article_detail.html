@@ -285,7 +285,7 @@ October 09, 2023
     <h1 class="display-6 text-center" >عنوان :{{ article.title_ArticleHome }}</h1>
     <h1 class="display-6 text-center" >نویسنده : {{ article.Body_or_text_ArticleHome }}</h1>
 
-      {% for cat in article.category_ArticleHome.all %}
+      {% for cat in article.categore_published.all %}
         <a href="">دسته بندی :{{ cat.title_category }}</a>
       {% endfor %}
 

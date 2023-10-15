@@ -1,0 +1,9 @@
+{% for article in category.articls.all %}
+
+
+<h1 class="display-6 text-center" >عنوان :{{ article.title_ArticleHome }}</h1>
+{% for cat in article.categore_published.all %}
+<a href="">دسته بندی :{{ cat.title_category }}</a>
+{% endfor %}
+
+{% endfor %}

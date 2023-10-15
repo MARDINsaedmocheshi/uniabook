@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import MainPage_view, about_view, detail_alert, detail_book, detail_article, category_books, category_Alert
+from .views import MainPage_view, about_view, detail_alert, detail_book, detail_article, category_books, category_Alert, category_Articls
 
 app_name = "MainPage_app_name"
 urlpatterns = [
@@ -10,6 +10,7 @@ urlpatterns = [
     path('article/<slug:slug>', detail_article, name="article_name"),
     path('category/books/<slug:slug>', category_books , name="category_books_name"),
     path('category/alerts/<slug:slug>', category_Alert , name="category_alerts_name"),
+    path('category/article/<slug:slug>', category_Articls , name="category_article_name"),
 
 
 ]

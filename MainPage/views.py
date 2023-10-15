@@ -84,4 +84,12 @@ def category_books(request, slug):
     return render(request, "MainPage/category_books.html", cotext)
 # -----------------------------------------------
 
+def category_Articls(request, slug):
+    cotext = {
+        # دسته بندی ها
+        "category" : get_object_or_404(Category, slug_category=slug, status_category=True),
+        # "category1" : Category.objects.filter(status_category=True)
+    }
+    return render(request, "MainPage/category_Articls.html", cotext)
+# -----------------------------------------------
 
