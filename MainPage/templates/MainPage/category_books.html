@@ -1,0 +1,9 @@
+{% for book in category.books.all %}
+
+
+<h1 class="display-6 text-center" >عنوان :{{ book.title_BookHome }}</h1>
+{% for cat in book.categore_published.all %}
+<a href="">دسته بندی :{{ cat.title_category }}</a>
+{% endfor %}
+
+{% endfor %}

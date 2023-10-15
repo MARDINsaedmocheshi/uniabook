@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import AlertModelMainPage, BookHomeModelMainPage, ArticleHomeModelMainPage, Category
 
 def MainPage_view(request):
@@ -61,3 +61,17 @@ def detail_article(request, slug):
     }
     return render(request, "MainPage/article_detail.html", cotext)
 # -----------------------------------------------
+
+
+
+
+def category_books(request, slug):
+    cotext = {
+        # دسته بندی ها
+        "category" : get_object_or_404(Category, slug_category=slug, status_category=True),
+        # "category1" : Category.objects.filter(status_category=True)
+    }
+    return render(request, "MainPage/category_books.html", cotext)
+# -----------------------------------------------
+
+

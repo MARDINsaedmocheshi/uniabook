@@ -84,6 +84,8 @@ class AlertModelMainPage(models.Model):
       return jalali_convert(self.publish_alert)
   jpublish.short_description ="زمان انتشار"
 
+  def categore_published(self):
+    return self.category_alert.filter(status_category=True)
 
 # ------------------------------------------------------------------------------------------------
 
@@ -151,6 +153,8 @@ class BookHomeModelMainPage(models.Model):
   def __str__(self):
     return self.title_BookHome
 
+  def categore_published(self):
+    return self.category_BookHome.filter(status_category=True)
 
 # ------------------------------------------------------------------------------------------------
 
@@ -214,6 +218,8 @@ class ArticleHomeModelMainPage(models.Model):
   def __str__(self):
     return self.title_ArticleHome
 
+  def categore_published(self):
+    return self.category_ArticleHome.filter(status_category=True)
 
 # ------------------------------------------------------------------------------------------------
 

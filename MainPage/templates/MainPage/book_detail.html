@@ -281,7 +281,7 @@ October 09, 2023
     <h1 class="display-6 text-center" >عنوان :{{ book.title_BookHome }}</h1>
     <h1 class="display-6 text-center" >نویسنده : {{ book.name_of_the_translator_or_translators_BookHome }}</h1>
 
-      {% for cat in book.category_BookHome.all %}
+      {% for cat in book.categore_published.all %}
         <a href="">دسته بندی :{{ cat.title_category }}</a>
       {% endfor %}
 
