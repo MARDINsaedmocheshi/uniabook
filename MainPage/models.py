@@ -10,6 +10,12 @@ class AlertManagers(models.Manager):
     return self.filter(status_alert='p')
 # -----------------------------------------------
 
+# my managers Book
+class BookManagers(models.Manager):
+  def published(self):
+    return self.filter(status_BookHome='p')
+# -----------------------------------------------
+
 
 
 
@@ -102,7 +108,7 @@ class BookHomeModelMainPage(models.Model):
   STATUS_CHOICES = (
     ('d','پیش نویس'),
     ('p','منتشر'),
-    ('p','تعداد کتاب محدود'),
+    ('m','تعداد کتاب محدود'),
     ('f','کتاب موجود نیست'),
     ('n','حذف خواهد شد'),
     ('b','به زودی موجود خواهد شد'),
@@ -163,6 +169,7 @@ class BookHomeModelMainPage(models.Model):
   def categore_published(self):
     return self.category_BookHome.filter(status_category=True)
 
+  objects = BookManagers()
 # ------------------------------------------------------------------------------------------------
 
 # Home page article | مقاله صفحه اصلی 
