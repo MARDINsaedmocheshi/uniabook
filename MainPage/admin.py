@@ -52,11 +52,16 @@ admin.site.title_article = 'مدیریت کتاب ها'
 
 # تنظیمات مقاله صفحه اصلی
 class ArticleHomeMainPageAdmin(admin.ModelAdmin):
-    list_display = ('title_ArticleHome' , 'slug_ArticleHome', 'status_ArticleHome', 'updated_ArticleHome', 'created_ArticleHome')
+    list_display = ('title_ArticleHome' , 'slug_ArticleHome', 'status_ArticleHome', 'updated_ArticleHome', 'created_ArticleHome', 'category_to_str')
     list_filter = (['publish_ArticleHome' ,'status_ArticleHome'] )
     search_fields = ('title_ArticleHome' ,'Body_or_text_ArticleHome'  )
     prepopulated_fields = {'slug_ArticleHome': ('title_ArticleHome',)}
     ordering = ['-publish_ArticleHome' , 'status_ArticleHome']
+
+    def category_to_str(self, obj):
+        return "،".join([category.title_category for category in obj.category_ArticleHome.all()])
+    category_to_str.short_description ="دسته بندی"
+
 
 admin.site.register(ArticleHomeModelMainPage, ArticleHomeMainPageAdmin)
 admin.site.title_article = 'مدیریت کتاب ها'
