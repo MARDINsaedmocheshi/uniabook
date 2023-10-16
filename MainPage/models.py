@@ -4,6 +4,11 @@ from extensions.utils import jalali_convert
 
 
 
+# my managers Alert
+class AlertManagers(models.Manager):
+  def published(self):
+    return self.filter(status_alert='p')
+# -----------------------------------------------
 
 
 
@@ -86,6 +91,8 @@ class AlertModelMainPage(models.Model):
 
   def categore_published(self):
     return self.category_alert.filter(status_category=True)
+
+  objects = AlertManagers()  
 
 # ------------------------------------------------------------------------------------------------
 
