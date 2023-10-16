@@ -23,7 +23,7 @@ class AlertMainPageAdmin(admin.ModelAdmin):
     ordering = ['-publish_alert' , 'status_alert']
 
     def category_to_str(self, obj):
-        return "،".join([category.title_category for category in obj.category_alert.all()])
+        return "،".join([category.title_category for category in obj.categore_published()])
     category_to_str.short_description ="دسته بندی"
 
 admin.site.register(AlertModelMainPage, AlertMainPageAdmin)
@@ -41,7 +41,7 @@ class BookHomeMainPageAdmin(admin.ModelAdmin):
     ordering = ['-publish_BookHome' , 'status_BookHome']
 
     def category_to_str(self, obj):
-        return "،".join([category.title_category for category in obj.category_BookHome.all()])
+        return "،".join([category.title_category for category in obj.categore_published()])
     category_to_str.short_description ="دسته بندی"
 
 
@@ -59,7 +59,7 @@ class ArticleHomeMainPageAdmin(admin.ModelAdmin):
     ordering = ['-publish_ArticleHome' , 'status_ArticleHome']
 
     def category_to_str(self, obj):
-        return "،".join([category.title_category for category in obj.category_ArticleHome.all()])
+        return "،".join([category.title_category for category in obj.categore_published()])
     category_to_str.short_description ="دسته بندی"
 
 
