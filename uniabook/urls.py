@@ -8,6 +8,8 @@ urlpatterns = [
 
     # صفحه اصلی 
     path('', include('MainPage.urls')),
+    # صفحه مقالات 
+    path('articles/', include('Articles.urls')),
 ]
 
 
