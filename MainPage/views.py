@@ -45,7 +45,7 @@ def detail_alert(request, slug):
 # صحفه لینک مربوطه هر کتاب
 def detail_book(request, slug):
     cotext = {
-        # کتاب ها 
+        # کتاب ها
         "Bookspagemain" : BookHomeModelMainPage.objects.filter(status_BookHome="p")[:6],
         "detail_book" : BookHomeModelMainPage.objects.get(slug_BookHome=slug),
         "category" : Category.objects.filter(status_category=True),
