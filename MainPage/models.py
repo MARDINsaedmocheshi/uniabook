@@ -16,6 +16,11 @@ class BookManagers(models.Manager):
     return self.filter(status_BookHome='p')
 # -----------------------------------------------
 
+# my managers Article
+class ArticleManagers(models.Manager):
+  def published(self):
+    return self.filter(status_ArticleHome='p')
+# -----------------------------------------------
 
 
 
@@ -235,5 +240,6 @@ class ArticleHomeModelMainPage(models.Model):
   def categore_published(self):
     return self.category_ArticleHome.filter(status_category=True)
 
+  objects = ArticleManagers()
 # ------------------------------------------------------------------------------------------------
 
