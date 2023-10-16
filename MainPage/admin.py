@@ -16,11 +16,17 @@ admin.site.title_category = 'مدیریت دسته بندی'
 
 # تنظیمات پیغام
 class AlertMainPageAdmin(admin.ModelAdmin):
-    list_display = ('title_alert' , 'slug_alert', 'status_alert', 'jpublish', 'updated_alert', 'created_alert')
+    list_display = ('title_alert' , 'slug_alert', 'status_alert', 'jpublish', 'updated_alert', 'created_alert', 'category_to_str')
     list_filter = (['publish_alert' ,'status_alert'] )
     search_fields = ('title_alert' ,'description_alert'  )
     prepopulated_fields = {'slug_alert': ('title_alert',)}
     ordering = ['-publish_alert' , 'status_alert']
+
+    def category_to_str(self, obj):
+        return "،".join([category.title_category for category in obj.category_alert.all()])
+    category_to_str.short_description ="دسته بندی"
+
+
 
 admin.site.register(AlertModelMainPage, AlertMainPageAdmin)
 admin.site.title_article = 'مدیریت پیغام ها'
