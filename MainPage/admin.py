@@ -26,8 +26,6 @@ class AlertMainPageAdmin(admin.ModelAdmin):
         return "،".join([category.title_category for category in obj.category_alert.all()])
     category_to_str.short_description ="دسته بندی"
 
-
-
 admin.site.register(AlertModelMainPage, AlertMainPageAdmin)
 admin.site.title_article = 'مدیریت پیغام ها'
 # --------------------------------------------------
@@ -36,11 +34,16 @@ admin.site.title_article = 'مدیریت پیغام ها'
 
 # تنظیمات کتاب صفحه اصلی
 class BookHomeMainPageAdmin(admin.ModelAdmin):
-    list_display = ('title_BookHome' , 'slug_BookHome', 'status_BookHome', 'updated_BookHome', 'created_BookHome')
+    list_display = ('title_BookHome' , 'slug_BookHome', 'status_BookHome', 'updated_BookHome', 'created_BookHome', 'category_to_str')
     list_filter = (['publish_BookHome' ,'status_BookHome'] )
     search_fields = ('title_BookHome' ,'description_BookHome'  )
     prepopulated_fields = {'slug_BookHome': ('title_BookHome',)}
     ordering = ['-publish_BookHome' , 'status_BookHome']
+
+    def category_to_str(self, obj):
+        return "،".join([category.title_category for category in obj.category_BookHome.all()])
+    category_to_str.short_description ="دسته بندی"
+
 
 admin.site.register(BookHomeModelMainPage, BookHomeMainPageAdmin)
 admin.site.title_article = 'مدیریت کتاب ها'
