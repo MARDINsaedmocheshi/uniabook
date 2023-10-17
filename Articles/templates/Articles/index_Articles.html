@@ -204,6 +204,7 @@ October 09, 2023
                         <a class="dropdown-item" href="myaccount.html">کودکان(Children’s)</a>
                         <a class="dropdown-item" href="myaccount.html">کتاب های زندگینامه</a>
                         <a class="dropdown-item" href="myaccount.html">کتاب های سفرنامه</a>
+                        <a class="dropdown-item" href="myaccount.html">کتاب های ماردین</a>
                       </div>
 
                       <div class="col-md-5 mega-menu-img m-auto text-center pl-0">
@@ -271,16 +272,16 @@ October 09, 2023
       </ol>
       <div class="carousel-inner" role="listbox">
         <!-- Slide One - Set the background image for this slide in the line below -->
-        <div class="carousel-item active" style="background-image: url('{% static "Articles/img/shop/shop-banner-1.jpg" %} ')">
+        <div class="carousel-item active" style="background-image: url('{% static "Articles/img/shop/11.jpg" %} ')">
           <div class="carousel-caption d-none d-md-block">
-            <h3>Sale Box</h3>
+            <h3>اسلایدر اول</h3>
              
           </div>
         </div>
         <!-- Slide Two - Set the background image for this slide in the line below -->
-        <div class="carousel-item" style="background-image: url('{% static "Articles/img/shop/shop-banner-2.jpg" %} ')">
+        <div class="carousel-item" style="background-image: url('{% static "Articles/img/shop/11.jpg" %} ')">
           <div class="carousel-caption d-none d-md-block">
-            <h3>Cool Shop</h3>
+            <h3>اسلایدر دوم</h3>
           </div>
         </div> 
       </div>
@@ -302,26 +303,31 @@ October 09, 2023
     <div class="container">
       <div class="row">
         <div class="col-lg-3">
+
           <div class="shop-p1-title">  
-            <h3>Categories</h3>
+            <h3>دسته بندی مقالات</h3>
             <div class="heading-border-light"></div> 
           </div>
-          <div class="list-group">
-            <a href="#" class="list-group-item">Books</a>
-            <a href="#" class="list-group-item">Shoes</a>
-            <a href="#" class="list-group-item">Mobile</a>
-            <a href="#" class="list-group-item">Desktop</a>
-            <a href="#" class="list-group-item">Cloths</a>
-            <a href="#" class="list-group-item">Electronics</a>
+
+          <div class="list-group text-center">
+            <a href="#" class="list-group-item">مقاله پژوهشی</a>
+            <a href="#" class="list-group-item">مقاله درسی</a>
+            <a href="#" class="list-group-item">مقاله اینترنت</a>
+            <a href="#" class="list-group-item">مقاله خرد</a>
+            <a href="#" class="list-group-item">مقاله خبری</a>
+            <a href="#" class="list-group-item">مقاله سایت</a>
           </div>
+
           <div class="input-group ">
-            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Search Product">
+            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="جستجوی مقاله">
             <div class="input-group-addon"><i class="fa fa-search"></i></div>
           </div>
-          <div class="shop-p1-title">  
+
+          <!-- <div class="shop-p1-title">  
             <h3>Top Sellers</h3>
             <div class="heading-border-light"></div> 
           </div>
+
           <ul class="list-unstyled top-seller">
               <li>
                 <img class="img-fluid" src="{% static "Articles/img/shop/shop-item-1.jpg" %} " alt="">
@@ -338,82 +344,49 @@ October 09, 2023
                 <h6>Tshirt sort Style</h6>
                 <p>$45.23</p>
               </li> 
-          </ul>  
+          </ul>   -->
+
         </div> 
+
         <div class="col-lg-9"> 
           <div class="row">
+            <!---->
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card ">
-                <a href="#"><img class="card-img-top" src="  {% static "Articles/img/shop/shop-item-1.jpg" %}" alt=""></a>
+
+                <a href="#"><img class="card-img-top" src="{% static "Articles/img/shop/shop-item-2.jpg" %}" alt=""></a>
+
                 <div class="card-body text-center">
                   <div class="card-title">
-                    <a href="#">Soft Raymond</a>
+                    <a href="#">مقاله تستی شماره یک</a>
                   </div>
-                  <strong>$44.99</strong>
+                  <strong>  12000 هزار تومان </strong>
+
                   <div class="cart-icon text-center">
-                    <a href="#"><i class="fa fa-cart-plus"></i> Add to Cart</a>
+                    <a href="#"> <i class="fa fa-download"></i> دانلود     <i class="fa fa-download"></i> ماردین  </a>
+                    
                   </div>
+
                 </div>
+
+                <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <img src="{% static "Articles/img/client/avatar-2.jpg" %}" alt="Avatar" class="avatar1" style="float:left ;">
+                  <!-- <img src="img/client/avatar-1.jpg" class="rounded-circle" alt="Cinque Terre"> -->
+                  <li class="breadcrumb-item" style="padding-top: 14px;">نویسنده : <a href="#">  ماردین ساعدموچشی</a></li>
+                </ol>
+                </nav>
+                <a  href=""><i class="fa fa-arrow-circle-o-right"></i> بیشتر بخوانید</a>
+                <a type="button" class="btn-success" href="">دیدن صفحه</a>
+
               </div>
+              
             </div> 
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card ">
-                <a href="#"><img class="card-img-top" src="  {% static "Articles/img/shop/shop-item-2.jpg" %}" alt=""></a>
-                <div class="card-body text-center">
-                  <div class="card-title">
-                    <a href="#">Soft Raymond</a>
-                  </div>
-                  <strong>$32.49</strong>
-                  <div class="cart-icon text-center">
-                    <a href="#"><i class="fa fa-cart-plus"></i> Add to Cart</a>
-                  </div>
-                </div>
-              </div>
-            </div> 
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card ">
-                <a href="#"><img class="card-img-top" src="  {% static "Articles/img/shop/shop-item-3.jpg" %}" alt=""></a>
-                <div class="card-body text-center">
-                  <div class="card-title">
-                    <a href="#">Soft Raymond</a>
-                  </div>
-                  <strong>$55.22</strong>
-                  <div class="cart-icon text-center">
-                    <a href="#"><i class="fa fa-cart-plus"></i> Add to Cart</a>
-                  </div>
-                </div>
-              </div>
-            </div> 
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card ">
-                <a href="#"><img class="card-img-top" src="  {% static "Articles/img/shop/shop-item-4.jpg" %}" alt=""></a>
-                <div class="card-body text-center">
-                  <div class="card-title">
-                    <a href="#">Soft Raymond</a>
-                  </div>
-                  <strong>$65.42</strong>
-                  <div class="cart-icon text-center">
-                    <a href="#"><i class="fa fa-cart-plus"></i> Add to Cart</a>
-                  </div>
-                </div>
-              </div>
-            </div> 
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card ">
-                <a href="#"><img class="card-img-top" src="  {% static "Articles/img/shop/shop-item-1.jpg" %}" alt=""></a>
-                <div class="card-body text-center">
-                  <div class="card-title">
-                    <a href="#">Soft Raymond</a>
-                  </div>
-                  <strong>$23.76</strong>
-                  <div class="cart-icon text-center">
-                    <a href="#"><i class="fa fa-cart-plus"></i> Add to Cart</a>
-                  </div>
-                </div>
-              </div>
-            </div>   
+            <!---->
+  
           </div>
-           <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel"> 
+
+           <!-- <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel"> 
              <div class="carousel-inner" role="listbox">
               <div class="carousel-item active">
                 <img class="d-block img-fluid" src="  {% static "Articles/img/shop/shop-banner-4.jpg" %}" alt="First slide">
@@ -430,8 +403,9 @@ October 09, 2023
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="sr-only">Next</span>
              </a>
-           </div>
-           <div class="row my-4">
+           </div> -->
+
+           <!-- <div class="row my-4">
 
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card ">
@@ -475,7 +449,7 @@ October 09, 2023
                 </div>
               </div>
             </div>    
-          </div>
+          </div> -->
         </div> 
       </div> 
     </div>
