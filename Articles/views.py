@@ -11,7 +11,7 @@ def Articles_view(request):
          "ALERT" : AlertTop.objects.filter(status_alert="p"),
         #  "Alertspagemain" : AlertModelMainPage.objects.published(), # میتونی اینجوری هم بنویسی
         # اسلایدر ها
-         "SLIDER" : SliderTop.objects.filter(status_Sliedr="p")[:6],
+         "SLIDER" : SliderTop.objects.filter(status_Sliedr="p")[:3],
         # مقاله ها
          "ARTICLE" : ArticlesModel.objects.filter(status_Article="p")[:6],
 

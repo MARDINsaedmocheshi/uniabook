@@ -212,7 +212,7 @@ class ArticlesModel(models.Model):
     return self.title_Article
 
   def jpublish(self):
-    return jalali_convert(self.publish_alert)
+    return jalali_convert(self.publish_Article)
   jpublish.short_description ="زمان انتشار"
 
   def categore_published(self):

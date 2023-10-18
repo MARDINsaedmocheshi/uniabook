@@ -60,14 +60,14 @@ October 09, 2023
   </div>
   -->
 
-{% comment %} {% for alert in Alertspagemain %}
+{% for alert in ALERT %}
   <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
         <strong>{{alert.title_alert}}</strong>
         <a type="button" class="btn-success" href="{% url 'MainPage_app_name:alert_name' alert.slug_alert %}">دیدن صفحه</a>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" href="#"></button>
   </div>
 {% endfor %}
-{% endcomment %}
+
 
       <!-- Top Navbar  -->
       <div class="top-menubar">
@@ -270,21 +270,20 @@ October 09, 2023
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
       </ol>
+
       <div class="carousel-inner" role="listbox">
         <!-- Slide One - Set the background image for this slide in the line below -->
-        <div class="carousel-item active" style="background-image: url('{% static "Articles/img/shop/11.jpg" %} ')">
+        {% for slid in SLIDER %}
+        <div class="carousel-item active" style="background-image: url('{{ slid.image_alert.url }}')">
+          
           <div class="carousel-caption d-none d-md-block">
-            <h3>اسلایدر اول</h3>
+            <h3>{{ slid.title_Sliedr }}</h3>
              
           </div>
         </div>
-        <!-- Slide Two - Set the background image for this slide in the line below -->
-        <div class="carousel-item" style="background-image: url('{% static "Articles/img/shop/11.jpg" %} ')">
-          <div class="carousel-caption d-none d-md-block">
-            <h3>اسلایدر دوم</h3>
-          </div>
-        </div> 
+        {% endfor %}
       </div>
+      
       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
@@ -310,12 +309,9 @@ October 09, 2023
           </div>
 
           <div class="list-group text-center">
-            <a href="#" class="list-group-item">مقاله پژوهشی</a>
-            <a href="#" class="list-group-item">مقاله درسی</a>
-            <a href="#" class="list-group-item">مقاله اینترنت</a>
-            <a href="#" class="list-group-item">مقاله خرد</a>
-            <a href="#" class="list-group-item">مقاله خبری</a>
-            <a href="#" class="list-group-item">مقاله سایت</a>
+            {% for cat in CATEGORY %}
+            <a href="#" class="list-group-item">{{ cat.title_category }}</a>
+            {% endfor %}
           </div>
 
           <div class="input-group ">
@@ -351,19 +347,20 @@ October 09, 2023
         <div class="col-lg-9"> 
           <div class="row">
             <!---->
+            {% for article in ARTICLE %}
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card ">
 
-                <a href="#"><img class="card-img-top" src="{% static "Articles/img/shop/shop-item-2.jpg" %}" alt=""></a>
+                <a href="#"><img class="card-img-top" src="{{ article.image_Article.url }}" alt=""></a>
 
                 <div class="card-body text-center">
                   <div class="card-title">
-                    <a href="#">مقاله تستی شماره یک</a>
+                    <a href="#">{{ article.title_Article }}</a>
                   </div>
-                  <strong>  12000 هزار تومان </strong>
+                  <strong>{{ article.jpublish }}</strong>
 
                   <div class="cart-icon text-center">
-                    <a href="#"> <i class="fa fa-download"></i> دانلود     <i class="fa fa-download"></i> ماردین  </a>
+                    <a href="Articles_file/{{ article.File_Article }}" download> <i class="fa fa-download"></i>{{ article.File_Article }}</a>
                     
                   </div>
 
@@ -382,6 +379,7 @@ October 09, 2023
               </div>
               
             </div> 
+            {% endfor %}
             <!---->
   
           </div>
