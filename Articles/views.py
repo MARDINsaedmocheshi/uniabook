@@ -1,18 +1,20 @@
 from django.shortcuts import render, get_object_or_404
-# from .models import 
+from .models import Category , AlertTop , SliderTop , ArticlesModel
+
 
 def Articles_view(request):
-    # cotext = {
+    cotext = {
 
-    #     # پیغام ها
-    #      "Alertspagemain" : AlertModelMainPage.objects.filter(status_alert="p"), # شیش تای آخر رو نشون میده
-    #     #  "Alertspagemain" : AlertModelMainPage.objects.published(), # میتونی اینجوری هم بنویسی
-    #     # کتاب ها        
-    #      "Bookspagemain" : BookHomeModelMainPage.objects.filter(status_BookHome="p")[:6], # شیش تای آخر رو نشون میده
-    #     # مقاله ها        
-    #      "Articlspagemain" : ArticleHomeModelMainPage.objects.filter(status_ArticleHome="p")[:6], # شیش تای آخر رو نشون میده
+        # دسته بندی ها
+         "CATEGORY" : Category.objects.filter(status_category=True),
+        # پیغام ها
+         "ALERT" : AlertTop.objects.filter(status_alert="p"),
+        #  "Alertspagemain" : AlertModelMainPage.objects.published(), # میتونی اینجوری هم بنویسی
+        # اسلایدر ها
+         "SLIDER" : SliderTop.objects.filter(status_Sliedr="p")[:6],
+        # مقاله ها
+         "ARTICLE" : ArticlesModel.objects.filter(status_Article="p")[:6],
 
-    #  }
-    return render(request, "Articles/index_Articles.html")
-    # return render(request, "MainPage/index.html", cotext)
+     }
+    return render(request, "Articles/index_Articles.html", cotext)
 # -----------------------------------------------
