@@ -151,3 +151,72 @@ class SliderTop(models.Model):
 
 # ------------------------------------------------------------------------------------------------
 
+
+# Articles | مقالات 
+class ArticlesModel(models.Model):
+  STATUS_CHOICES = (
+    ('d','پیش نویس'),
+    ('p','منتشر'),
+    ('m','تعداد مقاله محدود'),
+    ('f','مقاله موجود نیست'),
+    ('n','حذف خواهد شد'),
+    ('b','به زودی موجود خواهد شد'),
+    ('r','به دلیل عمل نکردن به قوانین سایت رد شد'),
+  )
+  Article_CHOICES= [
+   ("نوع مقاله", (
+           ("sar", "سایر"),
+           ("dns", "دانشجویی"),
+           ("ora", "مقاله پژوهشی"),
+           ("taa", "مقاله نظری"),
+           ("dor", "روش تحقیق"),
+           ("brr", "نقد کتاب"),
+           ("isi", "مقالات ISI"),
+           ("isc", "مقالات ISC"),
+           ("ara", "مقالات مروری"),
+           ("dst", "نوشته روزانه"),
+           ("cof", "مقالات کنفرانسی"),
+           ("scs", "مقالات اسکوپوس"),
+           ("rso", "گزارش‌ها و مطالعه مشاهدات"),
+           ("ass", "گزارش‌ها یا نامه‌های کوتاه"),
+
+       )
+   ),
+  ]
+
+  image_Article = models.ImageField(upload_to="Articles_image", verbose_name = "عکس مقاله")
+  File_Article = models.FileField(upload_to="Articles_file", verbose_name = "فایل مقاله")
+  title_Article = models.CharField(max_length=200, verbose_name = "نام مقاله" )
+  slug_Article = models.SlugField(max_length=100 , unique=True, verbose_name = "آدرس مقاله")
+#   نام مولف یا مولفان
+  Abstract_Article = models.TextField(verbose_name = "چکیده")
+  Key_word_Article = models.CharField(max_length=200, verbose_name = "کلید واژه" )
+  Introduction_Article = models.TextField(verbose_name = "مقدمه")
+  Body_or_text_Article = models.TextField(verbose_name = "بدنه یا متن")
+  Result_Article = models.TextField(verbose_name = "نتیجه")
+  References_Article = models.CharField(max_length=200, verbose_name = "منابع و ماخذ" )
+  category_Article = models.ManyToManyField("Category", verbose_name="دسته بندی", related_name="articls")
+#  description_Article = RichTextField(blank=True, null=True,verbose_name = "توضیح کوتاه")
+  publish_Article = models.DateTimeField(default=timezone.now, verbose_name = "زمان انتشار مقاله")
+  created_Article = models.DateTimeField(auto_now_add=True, verbose_name = "مقاله کی ایجاد شد؟") 
+  updated_Article = models.DateTimeField(auto_now =True, verbose_name = "مقاله کی آپدیت شد؟")
+  status_Article = models.CharField(max_length=1,choices=STATUS_CHOICES,default = 'd', verbose_name = "  وضعیت انتشار مقاله" )
+  Article_type_Article = models.CharField(max_length=3,choices=Article_CHOICES, verbose_name = " نوع مقاله" )
+  is_sale_Article = models.BooleanField(default=False, verbose_name = "تخفیف ویژه")
+
+  class Meta:
+    verbose_name_plural = "مقاله ها"
+    verbose_name = "مقاله"
+    
+  def __str__(self):
+    return self.title_Article
+
+  def jpublish(self):
+    return jalali_convert(self.publish_alert)
+  jpublish.short_description ="زمان انتشار"
+
+  def categore_published(self):
+    return self.category_Article.filter(status_category=True)
+
+#   objects = ArticleManagers()
+# ------------------------------------------------------------------------------------------------

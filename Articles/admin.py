@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category , AlertTop , SliderTop
+from .models import Category , AlertTop , SliderTop , ArticlesModel
 
 
 # تنظیمات دسته بندی
@@ -51,4 +51,25 @@ class SliderAdmin(admin.ModelAdmin):
 
 admin.site.register(SliderTop, SliderAdmin)
 admin.site.title_Sliedr = 'مدیریت پیغام ها'
+# --------------------------------------------------
+
+
+
+
+
+# تنظیمات مقالات 
+class ArticlesAdmin(admin.ModelAdmin):
+    list_display = ('title_Article' , 'slug_Article', 'status_Article', 'jpublish' , 'updated_Article', 'created_Article', 'category_to_str')
+    list_filter = (['publish_Article' ,'status_Article'] )
+    search_fields = ('title_Article' ,'Body_or_text_Article'  )
+    prepopulated_fields = {'slug_Article': ('title_Article',)}
+    ordering = ['-publish_Article' , 'status_Article']
+
+    def category_to_str(self, obj):
+        return "،".join([category.title_category for category in obj.categore_published()])
+    category_to_str.short_description ="دسته بندی"
+
+
+admin.site.register(ArticlesModel, ArticlesAdmin)
+admin.site.title_Article = 'مدیریت  مقاله ها'
 # --------------------------------------------------
