@@ -96,3 +96,58 @@ class AlertTop(models.Model):
 #   objects = AlertManagers()
 
 # ------------------------------------------------------------------------------------------------
+
+# Slider | اسلایدر
+class SliderTop(models.Model):
+  STATUS_CHOICES = (
+    ('d','پیش نویس'),
+    ('p','منتشر'),
+    ('f','اسلاید فاقد محتوا'),
+    ('n','حذف خواهد شد'),
+    ('b','به زودی منتشر خواهد شد'),
+    ('r','به دلیل عمل نکردن به قوانین سایت رد شد'),
+  )
+  Slider_CHOICES= [
+   ("نوع اسلاید", (
+           ("qwe", "تبلیغاتی"),
+           ("qwr", "آموزشی"),
+           ("qwt", "مقاله برتر"),
+           ("qwy", "معرفی کتاب"),
+           ("qwu", "معرفی موضوع هفته"),
+           ("qwi", "جملات انگیزشی"),
+           ("qwo", "معرفی شخص"),
+       )
+   ),
+  ]
+
+  image_alert = models.ImageField(upload_to="Slieder_image", verbose_name = "عکس اسلاید")
+  title_Sliedr = models.CharField(max_length=200, verbose_name = "عنوان اسلاید")
+  slug_Sliedr = models.SlugField(max_length=100 , unique=True, verbose_name = "آدرس اسلاید")
+  category_Sliedr = models.ManyToManyField("Category", verbose_name="دسته بندی", related_name="Sliedrs")
+  description_Sliedr = models.TextField(verbose_name = "توضیح کوتاه")
+#  description_Sliedr = RichTextField(blank=True, null=True,verbose_name = "توضیح کوتاه")
+  publish_Sliedr = models.DateTimeField(default=timezone.now, verbose_name = "زمان انتشار اسلاید")
+  created_Sliedr = models.DateTimeField(auto_now_add=True, verbose_name = "اسلاید کی ایجاد شد؟") 
+  updated_Sliedr = models.DateTimeField(auto_now =True, verbose_name = "اسلاید کی آپدیت شد؟")
+  status_Sliedr = models.CharField(max_length=1,choices=STATUS_CHOICES,default = 'd', verbose_name = "  وضعیت انتشار اسلاید" )
+  Sliedr_type_Sliedr = models.CharField(max_length=3,choices=Slider_CHOICES, verbose_name = " نوع اسلاید" )
+  Emphasis_on_the_message_Sliedr = models.BooleanField(default=False, verbose_name = "تاکید به اسلاید")
+
+  class Meta:
+    verbose_name_plural = "اسلاید ها"
+    verbose_name = "اسلاید"
+    
+  def __str__(self):
+    return self.title_Sliedr
+
+  def jpublish(self):
+      return jalali_convert(self.publish_Sliedr)
+  jpublish.short_description ="زمان انتشار"
+
+  def categore_published(self):
+    return self.category_Sliedr.filter(status_category=True)
+
+#   objects = SliedrManagers()
+
+# ------------------------------------------------------------------------------------------------
+
