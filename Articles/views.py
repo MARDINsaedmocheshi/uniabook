@@ -23,7 +23,8 @@ def Articles_view(request):
 def detail_alert(request, slug):
     cotext = {
         # پیغام ها
-        "detail_alert" : AlertTop.objects.get(slug_alert=slug)
+        "detail_alert" :  get_object_or_404(AlertTop , slug_alert=slug)
+       
     }
     return render(request, "Articles/detail_alert.html", cotext)
 # -----------------------------------------------
@@ -36,7 +37,7 @@ def detail_alert(request, slug):
 def detail_slider(request, slug):
     cotext = {
         # پیغام ها
-        "detail_slider" : SliderTop.objects.get(slug_Sliedr=slug)
+        "detail_slider" : get_object_or_404(SliderTop , slug_Sliedr=slug)
     }
     return render(request, "Articles/detail_slider.html", cotext)
 # -----------------------------------------------
@@ -51,7 +52,7 @@ def detail_slider(request, slug):
 def detail_article(request, slug):
     cotext = {
         # پیغام ها
-        "detail_article" : ArticlesModel.objects.get(slug_Article=slug)
+        "detail_article" : get_object_or_404(ArticlesModel , slug_Article=slug)
     }
     return render(request, "Articles/detail_article.html", cotext)
 # -----------------------------------------------
