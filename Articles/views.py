@@ -40,3 +40,18 @@ def detail_slider(request, slug):
     }
     return render(request, "Articles/detail_slider.html", cotext)
 # -----------------------------------------------
+
+
+
+
+
+
+
+# صحفه  مربوطه هر مقاله
+def detail_article(request, slug):
+    cotext = {
+        # پیغام ها
+        "detail_article" : ArticlesModel.objects.get(slug_Article=slug)
+    }
+    return render(request, "Articles/detail_article.html", cotext)
+# -----------------------------------------------
