@@ -27,3 +27,16 @@ def detail_alert(request, slug):
     }
     return render(request, "Articles/detail_alert.html", cotext)
 # -----------------------------------------------
+
+
+
+
+
+# صحفه  مربوطه هر اسلایدر
+def detail_slider(request, slug):
+    cotext = {
+        # پیغام ها
+        "detail_slider" : SliderTop.objects.get(slug_Sliedr=slug)
+    }
+    return render(request, "Articles/detail_slider.html", cotext)
+# -----------------------------------------------
