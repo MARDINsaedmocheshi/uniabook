@@ -51,8 +51,11 @@ def detail_slider(request, slug):
 # صحفه  مربوطه هر مقاله
 def detail_article(request, slug):
     cotext = {
-        # پیغام ها
-        "detail_article" : get_object_or_404(ArticlesModel , slug_Article=slug , status_Article="p")
+        # مقاله ها
+        "detail_article" : get_object_or_404(ArticlesModel , slug_Article=slug , status_Article="p"),
+        # دسته بندی ها
+        # "CATEGORY" : Category.objects.filter(status_category=True),
+
     }
     return render(request, "Articles/detail_article.html", cotext)
 # -----------------------------------------------

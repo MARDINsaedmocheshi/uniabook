@@ -293,8 +293,13 @@ October 09, 2023
       <li class="breadcrumb-item" style="padding-top: 14px;">نویسنده : <a href="#">  ماردین ساعدموچشی</a></li>
     </ol>
     </nav>
-    <a  href=""><i class="fa fa-arrow-circle-o-right"></i> بیشتر بخوانید</a>
-    <a type="button" class="btn-success" href="">دیدن صفحه</a>
+    {% comment %} <a  href=""><i class="fa fa-arrow-circle-o-right"></i> بیشتر بخوانید</a>
+    <a type="button" class="btn-success" href="">دیدن صفحه</a> {% endcomment %}
+    <div>
+      {% comment %} {% for cat in article.category_Article.all %} {% endcomment %}
+      {% comment %} <a  href="">{{ CATEGORY.title_category }}</a> {% endcomment %}
+      {% comment %} {% endfor %} {% endcomment %}
+    </div>
 
   </div>
   
