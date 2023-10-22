@@ -19,6 +19,19 @@ def Articles_view(request):
 # -----------------------------------------------
 
 
+
+
+
+
+# صحفه دسته بندی مربوطه هر پیغام
+def category_alert(request, slug):
+    cotext = {
+        
+        "category" :  get_object_or_404(Category , slug_category=slug , status_category=True)
+       
+    }
+    return render(request, "Articles/category_alert.html", cotext)
+# -----------------------------------------------
 # صحفه  مربوطه هر پیغام
 def detail_alert(request, slug):
     cotext = {
