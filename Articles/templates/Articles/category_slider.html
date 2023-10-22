@@ -285,7 +285,7 @@ October 09, 2023
           <div class="carousel-caption d-none d-md-block">
             <h3>{{ slid.title_Sliedr }}</h3>
             {% for cat in slid.category_Sliedr.all %}
-            <a  href="" style="color:white;">{{ cat.title_category }}</a>
+            <a  href="{% url "Articles_app_name:category_slider_name" cat.slug_category %}" style="color:white;">{{ cat.title_category }}</a>
             {% endfor %}
   
              
