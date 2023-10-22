@@ -120,7 +120,7 @@ class SliderTop(models.Model):
        )
    ),
   ]
-
+# متغیر عکس رو اشتباه نوشتم
   image_alert = models.ImageField(upload_to="Slieder_image", verbose_name = "عکس اسلاید")
   title_Sliedr = models.CharField(max_length=200, verbose_name = "عنوان اسلاید")
   slug_Sliedr = models.SlugField(max_length=100 , unique=True, verbose_name = "آدرس اسلاید")

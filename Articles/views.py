@@ -45,7 +45,15 @@ def detail_alert(request, slug):
 
 
 
-
+# صحفه دسته بندی مربوطه هر اسلایدر
+def category_slider(request, slug):
+    cotext = {
+        
+        "category" :  get_object_or_404(Category , slug_category=slug , status_category=True)
+       
+    }
+    return render(request, "Articles/category_slider.html", cotext)
+# -----------------------------------------------
 # صحفه  مربوطه هر اسلایدر
 def detail_slider(request, slug):
     cotext = {
