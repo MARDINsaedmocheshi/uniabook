@@ -15,6 +15,7 @@ October 09, 2023
 
 -->
 {% load static %}
+{% load base_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -107,7 +108,9 @@ October 09, 2023
           <a class="navbar-brand smooth-scroll" href="">
             <img  width="150" height="80" src="{% static "Articles/img/logo-uniabook/3/uniabook-low-resolution-logo-color-on-transparent-background.png" %} " alt="logo">
           </a> 
-
+          <a  href="">{% Title %}</a>
+           <br> <p>--</p>
+          <a  href="">{% Title 'مقدار تستی' %}</a>
 
           <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"> 
                 <span class="navbar-toggler-icon"></span>
