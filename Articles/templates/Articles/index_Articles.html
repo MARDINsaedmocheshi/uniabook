@@ -362,7 +362,7 @@ October 09, 2023
                   <strong>{{ article.jpublish }}</strong>
 
                   <div class="cart-icon text-center">
-                    <a href="Articles_file/{{ article.File_Article }}" download> <i class="fa fa-download"></i>{{ article.File_Article }}</a>
+                    <a href="Articles_file/{{ article.File_Article }}" download> <i class="fa fa-download"></i></a> 
                     
                   </div>
 
@@ -375,11 +375,15 @@ October 09, 2023
                   <li class="breadcrumb-item" style="padding-top: 14px;">نویسنده : <a href="#">  ماردین ساعدموچشی</a></li>
                 </ol>
                 </nav>
-                <a  href=""><i class="fa fa-arrow-circle-o-right"></i> بیشتر بخوانید</a>
-                <a type="button" class="btn-success" href="">دیدن صفحه</a>
+                {% comment %} <a  href=""><i class="fa fa-arrow-circle-o-right"></i> بیشتر بخوانید</a>
+                <a type="button" class="btn-success" href="">دیدن صفحه</a> {% endcomment %}
                 <a type="button" class="btn-success" href="{% url 'Articles_app_name:article_name' article.slug_Article %}">دیدن صفحه</a>
-
-              </div>
+                <div>
+                  {% for cat in article.category_Article.all %}
+                  <a  href="">{{ cat.title_category }}</a>
+                  {% endfor %}
+                </div>
+            </div>
               
             </div> 
             {% endfor %}

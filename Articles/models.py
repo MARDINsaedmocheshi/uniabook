@@ -82,7 +82,8 @@ class AlertTop(models.Model):
   class Meta:
     verbose_name_plural = "پیغام ها"
     verbose_name = "پیغام"
-    
+    ordering = ['-publish_alert']
+
   def __str__(self):
     return self.title_alert
 
@@ -136,7 +137,8 @@ class SliderTop(models.Model):
   class Meta:
     verbose_name_plural = "اسلاید ها"
     verbose_name = "اسلاید"
-    
+    ordering = ['publish_Sliedr']
+
   def __str__(self):
     return self.title_Sliedr
 
@@ -207,7 +209,8 @@ class ArticlesModel(models.Model):
   class Meta:
     verbose_name_plural = "مقاله ها"
     verbose_name = "مقاله"
-    
+    ordering = ['-publish_Article']
+
   def __str__(self):
     return self.title_Article
 
