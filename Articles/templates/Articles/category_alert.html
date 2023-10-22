@@ -275,7 +275,7 @@ October 09, 2023
     <strong>{{alert.title_alert}}</strong>
     <a type="button" class="btn-success" href="">دیدن صفحه</a>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" href="#"></button>
-    {% for cat in alert.category_alert.all %}
+    {% for cat in alert.categore_published.all %}
     <a  href="{% url "Articles_app_name:category_alert_name" cat.slug_category %}">{{ cat.title_category }}</a>
     {% endfor %}
 
