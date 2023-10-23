@@ -3,6 +3,14 @@ from django.utils import timezone
 from extensions.utils import jalali_convert
 
 
+# my managers Article
+class ArticleManagers(models.Manager):
+  def published(self):
+    return self.filter(status_Article='p')
+# 
+# class CategoryManagers(models.Manager):
+#   def active(self):
+#     return self.filter(status_category=True)
 
 
 
@@ -221,5 +229,5 @@ class ArticlesModel(models.Model):
   def categore_published(self):
     return self.category_Article.filter(status_category=True)
 
-#   objects = ArticleManagers()
+  objects = ArticleManagers()
 # ------------------------------------------------------------------------------------------------
