@@ -12,7 +12,9 @@ def Articles_view(request):
         # اسلایدر ها
          "SLIDER" : SliderTop.objects.filter(status_Sliedr="p")[:3],
         # مقاله ها
-         "ARTICLE" : ArticlesModel.objects.filter(status_Article="p").order_by('-publish_Article')[:6],
+        # میتونی از هر دوتاش استفاده کنی
+        #  "ARTICLE" : ArticlesModel.objects.filter(status_Article="p").order_by('-publish_Article')[:6],
+         "ARTICLE" : ArticlesModel.objects.published().order_by('-publish_Article')[:6],
 
      }
     return render(request, "Articles/index_Articles.html", cotext)
