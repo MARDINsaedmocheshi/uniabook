@@ -1,8 +1,21 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Category , AlertTop , SliderTop , ArticlesModel
+from django.core.paginator import Paginator
+
+
+
+
+
+
 
 # مربوط به صفحه مقالات
-def Articles_view(request):
+def Articles_view(request , page=1):
+
+    Article_list = ArticlesModel.objects.published().order_by('-publish_Article')
+    paginator = Paginator(Article_list, 2)
+    # page = request.GET.get('page')
+    articls = paginator.get_page(page)
+
     cotext = {
 
         # دسته بندی ها
@@ -14,7 +27,8 @@ def Articles_view(request):
         # مقاله ها
         # میتونی از هر دوتاش استفاده کنی
         #  "ARTICLE" : ArticlesModel.objects.filter(status_Article="p").order_by('-publish_Article')[:6],
-         "ARTICLE" : ArticlesModel.objects.published().order_by('-publish_Article')[:6],
+        #  "ARTICLE" : ArticlesModel.objects.published().order_by('-publish_Article')[:2],
+         "ARTICLE" : articls ,
 
      }
     return render(request, "Articles/index_Articles.html", cotext)
