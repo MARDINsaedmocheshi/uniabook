@@ -85,10 +85,18 @@ def detail_slider(request, slug):
 
 
 # صحفه دسته بندی مربوطه هر مقاله
-def category_article(request, slug):
+def category_article(request, slug , page=1):
+    category = get_object_or_404(Category , slug_category=slug , status_category=True)
+    Article_list = category.articls.published()
+
+    paginator = Paginator(Article_list, 3)
+    articls = paginator.get_page(page)
+
     cotext = {
         
-        "category" :  get_object_or_404(Category , slug_category=slug , status_category=True)
+        # "category" :  get_object_or_404(Category , slug_category=slug , status_category=True)
+        "category" : category,
+        "articls" :  articls,
        
     }
     return render(request, "Articles/category_article.html", cotext)

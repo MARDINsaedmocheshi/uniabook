@@ -266,7 +266,7 @@ October 09, 2023
 
 
 
-{% for article in category.articls.published %}
+{% for article in articls %}
 
 <div class="col-lg-4 col-md-6 mb-4">
   <div class="card ">
@@ -308,6 +308,23 @@ October 09, 2023
   </div>
   
 </div> 
+<nav aria-label="Page navigation example" >
+
+  <ul class="pagination">
+    {% comment %} {% if is_paginated %} {% endcomment %}
+    {% if articls.has_previous %}
+    <li class="page-item"><a class="page-link" href="{% url 'Articles_app_name:category_article_name' category.slug_category articls.previous_page_number %}">مقاله های جدید</a></li>
+    {% endif %}
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    {% if articls.has_next %}
+    <li class="page-item"><a class="page-link" href="{% url 'Articles_app_name:category_article_name' category.slug_category articls.next_page_number %}">سایر مقالات</a></li>
+    {% endif %}
+    {% comment %} {% endif %} {% endcomment %}
+  </ul>
+
+</nav>
 
 {% endfor %}
 
