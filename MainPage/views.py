@@ -1,20 +1,54 @@
 from django.shortcuts import render, get_object_or_404
 from .models import AlertModelMainPage, BookHomeModelMainPage, ArticleHomeModelMainPage, Category
+from django.views.generic.list import ListView 
+from django.views.generic.detail import DetailView
+from django.views.generic import TemplateView
 
-def MainPage_view(request):
-    cotext = {
+# ---------------------------------------------------------------------------
 
-        # پیغام ها
-         "Alertspagemain" : AlertModelMainPage.objects.filter(status_alert="p"), # شیش تای آخر رو نشون میده
-        #  "Alertspagemain" : AlertModelMainPage.objects.published(), # میتونی اینجوری هم بنویسی
-        # کتاب ها        
-         "Bookspagemain" : BookHomeModelMainPage.objects.filter(status_BookHome="p").order_by('-publish_BookHome')[:6], # شیش تای آخر رو نشون میده
-        # مقاله ها        
-         "Articlspagemain" : ArticleHomeModelMainPage.objects.filter(status_ArticleHome="p").order_by('-publish_ArticleHome')[:6], # شیش تای آخر رو نشون میده
+# class Alert_list(ListView):
+#     queryset = AlertModelMainPage.objects.filter(status_alert="p") , BookHomeModelMainPage.objects.filter(status_BookHome="p").order_by('-publish_BookHome')[:6] , ArticleHomeModelMainPage.objects.filter(status_ArticleHome="p").order_by('-publish_ArticleHome')[:6]
+#     template_name = "MainPage/index.html"
+    # context_object_name = "Alertspagemain"
 
-     }
-    return render(request, "MainPage/index.html", cotext)
-# -----------------------------------------------
+# class Book_list(ListView):
+#     queryset =  BookHomeModelMainPage.objects.filter(status_BookHome="p").order_by('-publish_BookHome')[:6]
+#     template_name = "MainPage/index.html"
+
+
+# class Articles_list(ListView):
+#     queryset =  ArticleHomeModelMainPage.objects.filter(status_ArticleHome="p").order_by('-publish_ArticleHome')[:6]
+#     template_name = "MainPage/index.html"
+# ---------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------
+class MainPage_view(TemplateView):
+    template_name = "MainPage/index.html"
+    
+    def get_context_data(self, **kwargs) :
+        context = super(MainPage_view , self).get_context_data(**kwargs)
+        context["Alertspagemain"] = AlertModelMainPage.objects.filter(status_alert="p")
+        context["Bookspagemain"] = BookHomeModelMainPage.objects.filter(status_BookHome="p").order_by('-publish_BookHome')[:6]
+        context["Articlspagemain"] = ArticleHomeModelMainPage.objects.filter(status_ArticleHome="p").order_by('-publish_ArticleHome')[:6]
+        return context
+# ---------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------
+# def MainPage_view(request):
+#     cotext = {
+
+#         # پیغام ها
+#          "Alertspagemain" : AlertModelMainPage.objects.filter(status_alert="p"), # شیش تای آخر رو نشون میده
+#         #  "Alertspagemain" : AlertModelMainPage.objects.published(), # میتونی اینجوری هم بنویسی
+#         # کتاب ها        
+#          "Bookspagemain" : BookHomeModelMainPage.objects.filter(status_BookHome="p").order_by('-publish_BookHome')[:6], # شیش تای آخر رو نشون میده
+#         # مقاله ها        
+#          "Articlspagemain" : ArticleHomeModelMainPage.objects.filter(status_ArticleHome="p").order_by('-publish_ArticleHome')[:6], # شیش تای آخر رو نشون میده
+
+#      }
+#     return render(request, "MainPage/index.html", cotext)
+# # -----------------------------------------------
+# ---------------------------------------------------------------------------
 
 
 # صفحه ما کی هستیم؟
