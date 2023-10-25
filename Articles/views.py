@@ -1,38 +1,55 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Category , AlertTop , SliderTop , ArticlesModel
 from django.core.paginator import Paginator
+from django.views.generic.list import ListView 
+from django.views.generic.detail import DetailView
+from django.views.generic import TemplateView
 
 
 
 
 
 
+# class Articles_view(TemplateView):
+#     template_name = "Articles/index_Articles.html"
+#     paginate_by = 2
+
+#     def get_context_data(self, **kwargs) :
+#         context = super(Articles_view , self).get_context_data(**kwargs)
+#         context["ARTICLE"] = ArticlesModel.objects.published().order_by('-publish_Article')
+
+#         return context
 
 # مربوط به صفحه مقالات
-def Articles_view(request , page=1):
+# def Articles_view(request , page=1):
 
-    Article_list = ArticlesModel.objects.published().order_by('-publish_Article')
-    paginator = Paginator(Article_list, 2)
-    # page = request.GET.get('page')
-    articls = paginator.get_page(page)
+#     Article_list = ArticlesModel.objects.published().order_by('-publish_Article')
+#     paginator = Paginator(Article_list, 2)
+#     # page = request.GET.get('page')
+#     articls = paginator.get_page(page)
 
-    cotext = {
+#     cotext = {
 
-        # دسته بندی ها
-         "CATEGORY" : Category.objects.filter(status_category=True),
-        # پیغام ها
-         "ALERT" : AlertTop.objects.filter(status_alert="p"),
-        # اسلایدر ها
-         "SLIDER" : SliderTop.objects.filter(status_Sliedr="p")[:3],
-        # مقاله ها
-        # میتونی از هر دوتاش استفاده کنی
-        #  "ARTICLE" : ArticlesModel.objects.filter(status_Article="p").order_by('-publish_Article')[:6],
-        #  "ARTICLE" : ArticlesModel.objects.published().order_by('-publish_Article')[:2],
-         "ARTICLE" : articls ,
+#         # دسته بندی ها
+#          "CATEGORY" : Category.objects.filter(status_category=True),
+#         # پیغام ها
+#          "ALERT" : AlertTop.objects.filter(status_alert="p"),
+#         # اسلایدر ها
+#          "SLIDER" : SliderTop.objects.filter(status_Sliedr="p")[:3],
+#         # مقاله ها
+#         # میتونی از هر دوتاش استفاده کنی
+#         #  "ARTICLE" : ArticlesModel.objects.filter(status_Article="p").order_by('-publish_Article')[:6],
+#         #  "ARTICLE" : ArticlesModel.objects.published().order_by('-publish_Article')[:2],
+#          "ARTICLE" : articls ,
 
-     }
-    return render(request, "Articles/index_Articles.html", cotext)
+#      }
+#     return render(request, "Articles/index_Articles.html", cotext)
 # -----------------------------------------------
+class Articles_view(ListView):
+    queryset = ArticlesModel.objects.published().order_by('-publish_Article')
+    paginate_by = 2
+
+# ------------------------------------------
 
 
 
