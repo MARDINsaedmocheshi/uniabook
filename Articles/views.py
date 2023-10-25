@@ -119,13 +119,18 @@ def category_article(request, slug , page=1):
     return render(request, "Articles/category_article.html", cotext)
 # -----------------------------------------------
 # صحفه  مربوطه هر مقاله
-def detail_article(request, slug):
-    cotext = {
-        # مقاله ها
-        "detail_article" : get_object_or_404(ArticlesModel , slug_Article=slug , status_Article="p"),
-        # دسته بندی ها
-        # "CATEGORY" : Category.objects.filter(status_category=True),
+# def detail_article(request, slug):
+#     cotext = {
+#         # مقاله ها
+#         "detail_article" : get_object_or_404(ArticlesModel , slug_Article=slug , status_Article="p"),
+#         # دسته بندی ها
+#         # "CATEGORY" : Category.objects.filter(status_category=True),
 
-    }
-    return render(request, "Articles/detail_article.html", cotext)
+#     }
+#     return render(request, "Articles/detail_article.html", cotext)
 # -----------------------------------------------
+class detail_article(DetailView):
+    template_name = "Articles/detail_article.html"
+    def get_object(self):
+        slug = self.kwargs.get('slug')
+        return get_object_or_404(ArticlesModel , slug_Article=slug , status_Article="p")

@@ -271,16 +271,16 @@ October 09, 2023
 <div class="col-lg-4 col-md-6 mb-4">
   <div class="card ">
 
-    <a href="#"><img class="card-img-top" src="{{ detail_article.image_Article.url }}" alt=""></a>
+    <a href="#"><img class="card-img-top" src="{{ object.image_Article.url }}" alt=""></a>
 
     <div class="card-body text-center">
       <div class="card-title">
-        <a href="#">{{ detail_article.title_Article }}</a>
+        <a href="#">{{ object.title_Article }}</a>
       </div>
-      <strong>{{ detail_article.jpublish }}</strong>
+      <strong>{{ object.jpublish }}</strong>
 
       <div class="cart-icon text-center">
-        <a href="Articles_file/{{ detail_article.File_Article }}" download> <i class="fa fa-download"></i>{{ article.File_Article }}</a>
+        <a href="Articles_file/{{ object.File_Article }}" download> <i class="fa fa-download"></i>{{ article.File_Article }}</a>
         
       </div>
 

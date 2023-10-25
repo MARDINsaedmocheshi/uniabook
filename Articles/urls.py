@@ -14,6 +14,6 @@ urlpatterns = [
 
     path('category_article/<slug:slug>', category_article, name="category_article_name"),
     path('category_article/<slug:slug>/<int:page>', category_article, name="category_article_name"),
-    path('article/<slug:slug>', detail_article, name="article_name"),
+    path('article/<slug:slug>', detail_article.as_view(), name="article_name"),
 ]
 
