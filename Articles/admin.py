@@ -2,6 +2,67 @@ from django.contrib import admin
 from .models import Category , AlertTop , SliderTop , ArticlesModel
 
 
+
+
+
+# غیر فعال کردن بخش حذف مقاله
+# admin.site.disable_action("delete_selected")
+
+# اکشن ها
+# پیش نویس---------------------------------------------
+@admin.action(description="پیش نویس مقالات انتخاب شده")
+def make_draft(self, request, queryset):
+    rows_updated = queryset.update(status_Article="d")
+    if rows_updated == 1:
+        message_bit = "پیش نویس شد"
+    else:
+        message_bit = "پیش نویس شدند."
+    self.message_user(request, "{} مقاله {} ".format(rows_updated, message_bit))
+
+#  منتشر ---------------------------------------------
+@admin.action(description="انتشار مقالات انتخاب شده")
+def make_published(self, request, queryset):
+    rows_updated = queryset.update(status_Article="p")
+    if rows_updated == 1:
+        message_bit = "منتشر شد"
+    else:
+        message_bit = "منتشر شدند."
+    self.message_user(request, "{} مقاله {} ".format(rows_updated, message_bit))
+
+
+#  رد قانونی ---------------------------------------------
+@admin.action(description="به دلیل عمل نکردن به قوانین سایت رد شد")
+def make_radq(self, request, queryset):
+    rows_updated = queryset.update(status_Article="r")
+    if rows_updated == 1:
+        message_bit = "رد قانون شد"
+    else:
+        message_bit = "رد قانون شدند."
+    self.message_user(request, "{} مقاله {} ".format(rows_updated, message_bit))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # تنظیمات دسته بندی
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('position_category','title_category', 'slug_category' , 'parent', 'status_category','jpublish','created_category','updated_category')
@@ -64,6 +125,7 @@ class ArticlesAdmin(admin.ModelAdmin):
     search_fields = ('title_Article' ,'Body_or_text_Article'  )
     prepopulated_fields = {'slug_Article': ('title_Article',)}
     ordering = ['-publish_Article' , 'status_Article']
+    actions = [make_published, make_draft, make_radq]
 
     def category_to_str(self, obj):
         return "،".join([category.title_category for category in obj.categore_published()])
