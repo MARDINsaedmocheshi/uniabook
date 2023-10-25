@@ -64,7 +64,7 @@ October 09, 2023
     </div>
     -->
   
-{% for alert in Alertspagemain %}
+{% for alert in object_list %}
 <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
     <strong>{{alert.title_alert}}</strong>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>

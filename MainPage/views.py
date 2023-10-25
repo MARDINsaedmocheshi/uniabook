@@ -51,15 +51,48 @@ class MainPage_view(TemplateView):
 # ---------------------------------------------------------------------------
 
 
+
+
+
+
+
+# ---------------------------------------------------------------------------
 # صفحه ما کی هستیم؟
-def about_view(request):
-    cotext = {
-        # پیغام ها
-         "Alertspagemain" : AlertModelMainPage.objects.filter(status_alert="p"),
+class about_view(ListView):
+    queryset = AlertModelMainPage.objects.filter(status_alert="p")
+    template_name = "MainPage/about.html"
+    context_object_name = "Alertspagemain"
+# ---------------------------------------------------------------------------
+
+# صفحه ما کی هستیم؟
+# def about_view(request):
+#     cotext = {
+#         # پیغام ها
+#          "Alertspagemain" : AlertModelMainPage.objects.filter(status_alert="p"),
          
-     }
-    return render(request, "MainPage/about.html", cotext)
+#      }
+#     return render(request, "MainPage/about.html", cotext)
 # -----------------------------------------------
+# ---------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # صحفه لینک مربوطه هر پیغام
