@@ -101,22 +101,54 @@ def detail_slider(request, slug):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 # صحفه دسته بندی مربوطه هر مقاله
-def category_article(request, slug , page=1):
-    category = get_object_or_404(Category , slug_category=slug , status_category=True)
-    Article_list = category.articls.published()
+class category_article(ListView):
+    paginate_by = 3
+    template_name = "Articles/category_article.html"
 
-    paginator = Paginator(Article_list, 3)
-    articls = paginator.get_page(page)
+    def get_queryset(self):
+        global category
+        slug = self.kwargs.get('slug')
+        category = get_object_or_404(Category , slug_category=slug , status_category=True)
+        # category = get_object_or_404(Category.objects.active() , slug_category=slug)
+        return category.articls.published()
 
-    cotext = {
+    def get_context_data(self, **kwargs):
+        # slug = self.kwargs.get('slug')
+        context = super().get_context_data(**kwargs)
+        # context["category"] = get_object_or_404(Category, slug_category=slug , status_category=True)
+        context["category"] = category
+        return context
+
+# صحفه دسته بندی مربوطه هر مقاله
+# def category_article(request, slug , page=1):
+#     category = get_object_or_404(Category , slug_category=slug , status_category=True)
+#     Article_list = category.articls.published()
+
+#     paginator = Paginator(Article_list, 3)
+#     articls = paginator.get_page(page)
+
+#     cotext = {
         
-        # "category" :  get_object_or_404(Category , slug_category=slug , status_category=True)
-        "category" : category,
-        "articls" :  articls,
+#         # "category" :  get_object_or_404(Category , slug_category=slug , status_category=True)
+#         "category" : category,
+#         "articls" :  articls,
        
-    }
-    return render(request, "Articles/category_article.html", cotext)
+#     }
+#     return render(request, "Articles/category_article.html", cotext)
 # -----------------------------------------------
 # صحفه  مربوطه هر مقاله
 # def detail_article(request, slug):
@@ -129,6 +161,7 @@ def category_article(request, slug , page=1):
 #     }
 #     return render(request, "Articles/detail_article.html", cotext)
 # -----------------------------------------------
+# صحفه  مربوطه هر مقاله
 class detail_article(DetailView):
     template_name = "Articles/detail_article.html"
     def get_object(self):

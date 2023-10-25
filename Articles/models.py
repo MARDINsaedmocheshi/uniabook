@@ -7,10 +7,10 @@ from extensions.utils import jalali_convert
 class ArticleManagers(models.Manager):
   def published(self):
     return self.filter(status_Article='p')
-# 
-# class CategoryManagers(models.Manager):
-#   def active(self):
-#     return self.filter(status_category=True)
+
+class CategoryManagers(models.Manager):
+  def active(self):
+    return self.filter(status_category=True)
 
 
 

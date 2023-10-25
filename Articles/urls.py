@@ -12,8 +12,8 @@ urlpatterns = [
     path('category_slider/<slug:slug>', category_slider, name="category_slider_name"),
     path('slider/<slug:slug>', detail_slider, name="slider_name"),
 
-    path('category_article/<slug:slug>', category_article, name="category_article_name"),
-    path('category_article/<slug:slug>/<int:page>', category_article, name="category_article_name"),
+    path('category_article/<slug:slug>', category_article.as_view(), name="category_article_name"),
+    path('category_article/<slug:slug>/<int:page>', category_article.as_view(), name="category_article_name"),
     path('article/<slug:slug>', detail_article.as_view(), name="article_name"),
 ]
 

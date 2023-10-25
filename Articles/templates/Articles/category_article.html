@@ -266,7 +266,7 @@ October 09, 2023
 
 
 
-{% for article in articls %}
+{% for article in object_list %}
 
 <div class="col-lg-4 col-md-6 mb-4">
   <div class="card ">
@@ -311,17 +311,16 @@ October 09, 2023
 <nav aria-label="Page navigation example" >
 
   <ul class="pagination">
-    {% comment %} {% if is_paginated %} {% endcomment %}
-    {% if articls.has_previous %}
-    <li class="page-item"><a class="page-link" href="{% url 'Articles_app_name:category_article_name' category.slug_category articls.previous_page_number %}">مقاله های جدید</a></li>
+    {% if is_paginated %}
+    {% if page_obj.has_previous %}
+    <li class="page-item"><a class="page-link" href="{% url 'Articles_app_name:category_article_name' category.slug_category page_obj.previous_page_number %}">مقاله های جدید</a></li>
     {% endif %}
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    {% if articls.has_next %}
-    <li class="page-item"><a class="page-link" href="{% url 'Articles_app_name:category_article_name' category.slug_category articls.next_page_number %}">سایر مقالات</a></li>
+    <li class="page-item"><a class="page-link" href="#">{{ page_obj.number }}</a></li>
+    <li class="page-item"><a class="page-link" href="#">{{ page_obj.paginator.num_pages }}</a></li>
+{% if page_obj.has_next %}
+    <li class="page-item"><a class="page-link" href="{% url 'Articles_app_name:category_article_name' category.slug_category page_obj.next_page_number %}">سایر مقالات</a></li>
     {% endif %}
-    {% comment %} {% endif %} {% endcomment %}
+    {% endif %}
   </ul>
 
 </nav>
