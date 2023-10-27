@@ -3,6 +3,7 @@ from .models import Category , AlertTop , SliderTop , ArticlesModel
 
 
 
+admin.site.site_header = "وبسایت دانشگاه مقاله و کتاب"
 
 
 # غیر فعال کردن بخش حذف مقاله
