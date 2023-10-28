@@ -4,6 +4,7 @@ from django.core.paginator import Paginator
 from django.views.generic.list import ListView 
 from django.views.generic.detail import DetailView
 from django.views.generic import TemplateView
+from django.contrib.auth.models import User
 
 
 
@@ -167,3 +168,28 @@ class detail_article(DetailView):
     def get_object(self):
         slug = self.kwargs.get('slug')
         return get_object_or_404(ArticlesModel , slug_Article=slug , status_Article="p")
+
+
+
+
+
+
+
+
+# -----------------------------------------------
+class AuthorList(ListView):
+    paginate_by = 2
+    template_name = "Articles/author_list.html"
+
+    def get_queryset(self):
+        global author
+        username = self.kwargs.get('username')
+        author = get_object_or_404(User, username=username)
+        return author.articls.published()
+
+    def get_context_data(self, **kwargs):
+        # slug = self.kwargs.get('slug')
+        context = super().get_context_data(**kwargs)
+        # context["auther"] = get_object_or_404(auther.objects.active(), slug_category=slug)
+        context["author"] = author
+        return context

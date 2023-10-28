@@ -360,6 +360,7 @@ October 09, 2023
         <div class="col-lg-9"> 
           <div class="row">
             <!---->
+            <h3 class="alert alert-primary text-center"> نویسنده : {{ author.get_full_name }} </h3>
             {% for article in ARTICLE %}
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card ">
@@ -383,7 +384,7 @@ October 09, 2023
                 <ol class="breadcrumb">
                   <img src="{% static "Articles/img/client/avatar-2.jpg" %}" alt="Avatar" class="avatar1" style="float:left ;">
                   <!-- <img src="img/client/avatar-1.jpg" class="rounded-circle" alt="Cinque Terre"> -->
-                  <li class="breadcrumb-item" style="padding-top: 14px;">نویسنده : <a href="#">  ماردین ساعدموچشی</a></li>
+                  <li class="breadcrumb-item" style="padding-top: 14px;">نویسنده : <a href="{% url "Articles_app_name:author_article_name" article.author %}"> {{ article.author.get_full_name }}</a></li>
                 </ol>
                 </nav>
                 {% comment %} <a  href=""><i class="fa fa-arrow-circle-o-right"></i> بیشتر بخوانید</a>

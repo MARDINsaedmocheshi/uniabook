@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.utils.html import format_html
+from django.contrib.auth.models import User
 from extensions.utils import jalali_convert
 
 
@@ -194,12 +195,11 @@ class ArticlesModel(models.Model):
        )
    ),
   ]
-
+  author = models.ForeignKey(User , null=True , on_delete=models.SET_NULL , related_name="articls", verbose_name = "نویسنده" )
   image_Article = models.ImageField(upload_to="Articles_image", verbose_name = "عکس مقاله")
   File_Article = models.FileField(upload_to="Articles_file", verbose_name = "فایل مقاله")
   title_Article = models.CharField(max_length=200, verbose_name = "نام مقاله" )
   slug_Article = models.SlugField(max_length=100 , unique=True, verbose_name = "آدرس مقاله")
-#   نام مولف یا مولفان
   Abstract_Article = models.TextField(verbose_name = "چکیده")
   Key_word_Article = models.CharField(max_length=200, verbose_name = "کلید واژه" )
   Introduction_Article = models.TextField(verbose_name = "مقدمه")
