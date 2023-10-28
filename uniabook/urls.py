@@ -10,6 +10,8 @@ urlpatterns = [
     path('', include('MainPage.urls')),
     # صفحه مقالات 
     path('articles/', include('Articles.urls')),
+    # صفحه اکانت 
+    path('account/', include('account.urls')),
 ]
 
 
