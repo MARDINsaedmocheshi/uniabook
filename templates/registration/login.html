@@ -1,4 +1,5 @@
 {% load static %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,19 +31,45 @@
 </head>
 <body>
 	
-	<div class="limiter">
+
+	<div class="limiter">  
 		<div class="container-login100">
 			<div class="wrap-login100">
+
+        {% comment %} ---------------------------------------------------------------------- {% endcomment %}
+        {% if form.non_field_errors %}
+        <div  class="alert alert-danger text-center text-black" role="alert"> 
+          {% for error in form.non_field_errors %}
+            <span>{{ error }} </span>
+          {% endfor %}
+        </div>
+        {% endif %}
+        {% comment %} ---------------------------------------------------------------------- {% endcomment %}
+
+
 				<form class="login100-form validate-form" method="post" > {% csrf_token %}
 					<span class="login100-form-title p-b-26">
 						ورود کاربران
 					</span>
-					<span class="login100-form-title p-b-48">
+					{% comment %} <span class="login100-form-title p-b-48">
 						<i class="zmdi zmdi-font"></i>
-					</span>
+					</span> {% endcomment %}
 
 					<div class="wrap-input100 validate-input" data-validate = "نام کاربری حود را وارد کنید">
-           {{ form.username }} 
+
+           {{ form.username|add_class:"input100" }} 
+        {% comment %} ---------------------------------------------------------------------- {% endcomment %}
+        {% if form.username.errors %}
+        <div  class="alert alert-danger text-center text-black" role="alert"> 
+          {% for error in form.username.errors %}
+            <span>{{ error }} </span>
+          {% endfor %}
+        </div>
+        {% endif %}
+        {% comment %} ---------------------------------------------------------------------- {% endcomment %}
+
+
+
 						<span class="focus-input100" data-placeholder="نام کاربری"></span>
 					</div>
 
@@ -50,7 +77,18 @@
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
 						</span>
-           {{ form.password }} 
+
+           {{ form.password|add_class:"input100" }} 
+        {% comment %} ---------------------------------------------------------------------- {% endcomment %}
+        {% if form.password.errors %}
+        <div  class="alert alert-danger text-center text-black" role="alert"> 
+          {% for error in form.password.errors %}
+            <span>{{ error }} </span>
+          {% endfor %}
+        </div>
+        {% endif %}
+        {% comment %} ---------------------------------------------------------------------- {% endcomment %}
+
 						<span class="focus-input100" data-placeholder="رمز"></span>
 					</div>
 

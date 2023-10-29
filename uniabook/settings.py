@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'extensions',
     'Articles.apps.ArticlesConfig',
     'account.apps.AccountConfig',
+    'widget_tweaks',
 
 ]
 
