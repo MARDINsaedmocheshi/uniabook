@@ -5,5 +5,76 @@
 
 
 {% block main %}
-    خوش آمدی {{user.get_full_name}} عزیز
+                   <!-- page start-->
+                   <div class="row">
+                    
+                    <div class="col-lg-12">
+                        <section class="panel">
+                            <header class="panel-heading">
+                                Dynamic Table
+                         
+                            </header>
+                            <table class="table table-striped border-top" id="sample_1">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 8px;">
+                                            <input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" />
+                                        </th>
+                                        <th>نام مقاله</th>
+                                        <th class="hidden-phone">نویسنده</th>
+                                        <th class="hidden-phone">عکس مقاله</th>
+                                        <th class="hidden-phone">آدرس مقاله</th>
+                                        <th class="hidden-phone">وضعیت انتشار مقاله</th>
+                                        <th class="hidden-phone">زمان انتشار</th>
+                                        <th class="hidden-phone">دسته بندی</th>
+                                        
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    {% for article in object_list %}
+                                    <tr class="odd gradeX">
+                                        <td>
+                                            <input type="checkbox" class="checkboxes" value="1" />
+                                        </td>
+                                        <td>{{ article.title_Article|truncatewords:10 }}</td>
+                                        <td class="hidden-phone"><a href="mailto:jhone-doe@gmail.com">{{ article.author.get_full_name }}</a></td>
+                                        <td class="hidden-phone"> <img width=100 height=75 style='border-radius: 5px;' src="{{ article.image_Article.url }}"> </td>
+                                        <td class="hidden-phone">{{ article.slug_Article }}</td>
+
+                                        <td class="hidden-phone">
+
+                                            {% if article.status_Article == "p" %}
+                                            
+                                            <span class="label label-success">منتشر شد</span> </br>
+                                            <a class="label label-primary" target="_blank" href="{% url "Articles_app_name:article_name" article.slug_Article %}" > نمایش در سایت </a>
+                                            
+                                            
+                                            {% elif article.status_Article == "r" %}
+                                            
+                                            <span class="label label-danger">رد قوانین</span>
+                                            <a class="label label-primary" target="_blank" href="{% url "Articles_app_name:article_name" article.slug_Article %}" > نمایش در سایت </a>
+
+                                            {% elif article.status_Article == "d" %}
+                                            
+                                            <span class="label label-warning">پیش نویس</span>
+                                            <a class="label label-primary" target="_blank" href="{% url "Articles_app_name:article_name" article.slug_Article %}" > نمایش در سایت </a>
+
+                                            {% endif %}
+                                        
+                                        </td>
+
+                                        <td class="hidden-phone">{{ article.jpublish }}</td>
+                                        <td class="center hidden-phone">{{ article.category_to_str }}</td>
+                                    </tr>
+                                        {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </section>
+                    </div>
+                </div>
+                <!-- page end-->
+
 {% endblock main %}

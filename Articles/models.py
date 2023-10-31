@@ -235,6 +235,10 @@ class ArticlesModel(models.Model):
     return format_html("<img width=100 height=75 style='border-radius: 5px;' src='{}'".format(self.image_Article.url))
   small_picture.short_description ="عکس مقاله"
 
+  def category_to_str(self):
+      return "،".join([category.title_category for category in self.categore_published()])
+  category_to_str.short_description ="دسته بندی"
+
 
   objects = ArticleManagers()
 # ------------------------------------------------------------------------------------------------

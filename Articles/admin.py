@@ -128,9 +128,6 @@ class ArticlesAdmin(admin.ModelAdmin):
     ordering = ['-publish_Article' , 'status_Article']
     actions = [make_published, make_draft, make_radq]
 
-    def category_to_str(self, obj):
-        return "،".join([category.title_category for category in obj.categore_published()])
-    category_to_str.short_description ="دسته بندی"
 
 
 admin.site.register(ArticlesModel, ArticlesAdmin)

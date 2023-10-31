@@ -4,9 +4,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.list import ListView
 from Articles.models import ArticlesModel
 
-@login_required
-def home_account(request):
-    return render(request, "registration/home_account.html")
+# @login_required
+# def home_account(request):
+#     return render(request, "registration/home_account.html")
 
 
 
