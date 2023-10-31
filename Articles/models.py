@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.utils.html import format_html
 from django.contrib.auth.models import User
 from extensions.utils import jalali_convert
-
+from django.urls import reverse
 
 # my managers Article
 class ArticleManagers(models.Manager):
@@ -239,6 +239,9 @@ class ArticlesModel(models.Model):
       return "،".join([category.title_category for category in self.categore_published()])
   category_to_str.short_description ="دسته بندی"
 
+# بعد از وارد کردن یک مقاله جدید وقتی ایجاد بشه شمارو ریدایرکت میکنه به صفحه لیست مقالات مربوط به پنل مدیریتی ادمینها
+  def get_absolute_url(self):
+    return reverse("ACCOUNT:home_account")
 
   objects = ArticleManagers()
 # ------------------------------------------------------------------------------------------------
