@@ -11,6 +11,12 @@ from Articles.models import ArticlesModel
 
 
 class ArticleListAccount(LoginRequiredMixin,ListView):
-    queryset = ArticlesModel.objects.all().order_by('-publish_Article')
+    # queryset = ArticlesModel.objects.all().order_by('-publish_Article')
     template_name = "registration/home_account.html"
     # paginate_by = 2
+    def get_queryset(self):
+        if self.request.user.is_superuser:
+            return ArticlesModel.objects.all().order_by('-publish_Article')
+        else:
+            return ArticlesModel.objects.filter(author=self.request.user).order_by('-publish_Article')
+
