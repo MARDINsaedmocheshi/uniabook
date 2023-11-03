@@ -1,12 +1,74 @@
 
 {% extends "registration/base.html" %}
+{% load crispy_forms_tags %}
 
-{% block title %}   لیست مقالات    {% endblock title %}
+{% block title %} {% block title-meta %}
+
+   لیست مقالات 
+
+{% endblock title %}{% endblock title-meta %}
 
 
 {% block main %}
-    <form method="post" enctype="multipart/form-data"> {% csrf_token %}
-    {{form.as_p}}
+<div class="alert alert-primary" role="alert" style="text-align: center;">
+    افزودن مقاله جدید توسط <span style="color:red;">{{user.get_full_name}} </span>
+  </div>
+    <form method="post" enctype="multipart/form-data" > {% csrf_token %}
+
+        <div class="row" style="text-align: right;">
+
+            <div class="col-2">
+                {{ form.author|as_crispy_field }}
+              </div>
+
+            <div class="col-8">
+                {{ form.slug_Article|as_crispy_field }}
+            </div>
+                
+            <div class="col-2">
+                {{ form.is_sale_Article|as_crispy_field }}
+              </div>
+
+              <div class="col-12">
+                {{ form.title_Article|as_crispy_field }}
+            </div>
+
+            <div class="col-6">
+                {{ form.image_Article|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.File_Article|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.Abstract_Article|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.Key_word_Article|as_crispy_field }}
+            </div>
+            <div class="col-12">
+                {{ form.Introduction_Article|as_crispy_field }}
+            </div>
+            <div class="col-12">
+                {{ form.Body_or_text_Article|as_crispy_field }}
+            </div>
+            <div class="col-4">
+                {{ form.Result_Article|as_crispy_field }}
+            </div>
+            <div class="col-4">
+                {{ form.References_Article|as_crispy_field }}
+            </div>
+            <div class="col-4">
+                {{ form.category_Article|as_crispy_field }}
+            </div>
+            <div class="col-12">
+                {{ form.Article_type_Article|as_crispy_field }}
+            </div>
+
+            
+
+        </div>
+
+        <br>
     <button class="btn btn-success">ارسال  مقاله </button>
     </form>
 {% endblock main %}
