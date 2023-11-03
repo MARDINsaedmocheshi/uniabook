@@ -9,8 +9,9 @@
     <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
 
-    <title>صفحه مدیریتی سایت</title>
-
+    <title >{% block title-meta %}صفحه مدیریتی سایت{% endblock title-meta %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <!-- Bootstrap core CSS -->
     <link href=" {% static 'registration/adminlte/css/bootstrap.min.css' %} " rel="stylesheet">
     <link href="{% static 'registration/adminlte/css/bootstrap-reset.css' %}" rel="stylesheet">

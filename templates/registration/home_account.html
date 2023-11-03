@@ -27,6 +27,7 @@
                                         <th class="hidden-phone">وضعیت انتشار مقاله</th>
                                         <th class="hidden-phone">زمان انتشار</th>
                                         <th class="hidden-phone">دسته بندی</th>
+                                        <th class="hidden-phone">متن </th>
                                         
 
                                     </tr>
@@ -42,6 +43,7 @@
                                         <td class="hidden-phone"><a href="mailto:jhone-doe@gmail.com">{{ article.author.get_full_name }}</a></td>
                                         <td class="hidden-phone"> <img width=100 height=75 style='border-radius: 5px;' src="{{ article.image_Article.url }}"> </td>
                                         <td class="hidden-phone">{{ article.slug_Article }}</td>
+                                        
 
                                         <td class="hidden-phone">
 
@@ -67,6 +69,7 @@
 
                                         <td class="hidden-phone">{{ article.jpublish }}</td>
                                         <td class="center hidden-phone">{{ article.category_to_str }}</td>
+                                        <td class="hidden-phone">{{ article.Body_or_text_Article|striptags }}</td>
                                     </tr>
                                         {% endfor %}
 

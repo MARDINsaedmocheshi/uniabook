@@ -4,6 +4,7 @@ from django.utils.html import format_html
 from django.contrib.auth.models import User
 from extensions.utils import jalali_convert
 from django.urls import reverse
+from ckeditor.fields import RichTextField
 
 # my managers Article
 class ArticleManagers(models.Manager):
@@ -203,7 +204,7 @@ class ArticlesModel(models.Model):
   Abstract_Article = models.TextField(verbose_name = "چکیده")
   Key_word_Article = models.CharField(max_length=200, verbose_name = "کلید واژه" )
   Introduction_Article = models.TextField(verbose_name = "مقدمه")
-  Body_or_text_Article = models.TextField(verbose_name = "بدنه یا متن")
+  Body_or_text_Article = RichTextField(verbose_name = "بدنه یا متن")
   Result_Article = models.TextField(verbose_name = "نتیجه")
   References_Article = models.CharField(max_length=200, verbose_name = "منابع و ماخذ" )
   category_Article = models.ManyToManyField("Category", verbose_name="دسته بندی", related_name="articls")
