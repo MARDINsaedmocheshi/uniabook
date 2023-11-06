@@ -17,14 +17,17 @@
 
         <div class="row" style="text-align: right;">
 
+            {% if user.is_superuser %}
             <div class="col-2">
                 {{ form.author|as_crispy_field }}
               </div>
 
             <div class="col-8">
-                {{ form.slug_Article|as_crispy_field }}
+                {{ form.status_Article|as_crispy_field }}
             </div>
-                
+            {% endif %}
+
+
             <div class="col-2">
                 {{ form.is_sale_Article|as_crispy_field }}
               </div>
@@ -63,9 +66,12 @@
             <div class="col-12">
                 {{ form.Article_type_Article|as_crispy_field }}
             </div>
+            <div class="col-12">
+                {{ form.slug_Article|as_crispy_field }}
+            </div>
 
             
-
+            
         </div>
 
         <br>
