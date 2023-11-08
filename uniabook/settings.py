@@ -4,6 +4,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 LOGIN_REDIRECT_URL = "ACCOUNT:home_account"
+LOGOUT_REDIRECT_URL = "ACCOUNT:login"
 LOGIN_URL = "ACCOUNT:login"
 
 # Quick-start development settings - unsuitable for production
