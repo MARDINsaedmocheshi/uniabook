@@ -72,7 +72,16 @@
                                             <a class="label label-primary" target="_blank" href="{% url "Articles_app_name:article_name" article.slug_Article %}" > نمایش در سایت </a>
 
                                             {% endif %}
-                                        
+
+                                            {% comment %} حذف یک مقاله فقط و فقط توسط سوپریوزرها پاک میشود نه توسط نویسندگان {% endcomment %}
+                                            {% if user.is_superuser %}
+                                            
+                                            {% comment %} <span class="label label-danger">رد قوانین</span> {% endcomment %}
+                                            <a class="label"  href="{% url "ACCOUNT:delete_article" article.pk %}" style="color:red;">حذف</a>
+
+                                            {% endif %}
+
+
                                         </td>
 
                                         <td class="hidden-phone">{{ article.jpublish }}</td>

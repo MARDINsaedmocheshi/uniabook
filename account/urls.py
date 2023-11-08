@@ -1,6 +1,6 @@
 from django.contrib.auth import views
 from django.urls import path
-from .views import ArticleListAccount , ArticleCreateViewAccount , ArticleUpdateViewAccount
+from .views import ArticleListAccount , ArticleCreateViewAccount , ArticleUpdateViewAccount , ArticleDeleteViewAccount
 
 
 app_name = "ACCOUNT"
@@ -25,4 +25,5 @@ urlpatterns += [
     path("", ArticleListAccount.as_view() , name="home_account"),
     path("article/create", ArticleCreateViewAccount.as_view() , name="create_article"),
     path("article/update/<int:pk>", ArticleUpdateViewAccount.as_view() , name="update_article"),
+    path("article/delete/<int:pk>", ArticleDeleteViewAccount.as_view() , name="delete_article"),
 ]

@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView , CreateView , UpdateView
+from django.views.generic import ListView , CreateView , UpdateView , DeleteView
 from Articles.models import ArticlesModel
-from .mixins import fieldsMixin , FormValidMixin , AuthorAccessMixin
-
+from .mixins import fieldsMixin , FormValidMixin , AuthorAccessMixin , superuserAccessMixin
+from django.urls import reverse_lazy
 
 # @login_required
 # def home_account(request):
@@ -30,3 +30,8 @@ class ArticleCreateViewAccount(LoginRequiredMixin , FormValidMixin , fieldsMixin
 class ArticleUpdateViewAccount(AuthorAccessMixin , FormValidMixin , fieldsMixin , UpdateView):
     model = ArticlesModel
     template_name = "registration/article_create_update.html"
+
+class ArticleDeleteViewAccount(superuserAccessMixin , DeleteView):
+    model = ArticlesModel
+    success_url = reverse_lazy("ACCOUNT:home_account")
+    template_name = "registration/articlesmodel_confirm_delete.html"
