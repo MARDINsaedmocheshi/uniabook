@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView , CreateView
+from django.views.generic import ListView , CreateView , UpdateView
 from Articles.models import ArticlesModel
-from .mixins import fieldsMixin , FormValidMixin
+from .mixins import fieldsMixin , FormValidMixin , AuthorAccessMixin
 
 
 # @login_required
@@ -25,4 +25,8 @@ class ArticleListAccount(LoginRequiredMixin,ListView):
 class ArticleCreateViewAccount(LoginRequiredMixin , FormValidMixin , fieldsMixin , CreateView):
     model = ArticlesModel
     # fields = [ 'author' , 'image_Article' , 'File_Article' , 'title_Article' , 'slug_Article', 'Abstract_Article', 'Key_word_Article', 'Introduction_Article', 'Body_or_text_Article', 'Result_Article', 'References_Article', 'category_Article', 'Article_type_Article', 'is_sale_Article' , 'status_Article' ]
+    template_name = "registration/article_create_update.html"
+
+class ArticleUpdateViewAccount(AuthorAccessMixin , FormValidMixin , fieldsMixin , UpdateView):
+    model = ArticlesModel
     template_name = "registration/article_create_update.html"

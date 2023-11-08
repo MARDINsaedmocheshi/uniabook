@@ -1,6 +1,6 @@
 from django.http import Http404
-# from django.shortcuts import  get_object_or_404
-# from blognewsapp.models import blognewsuni
+from django.shortcuts import  get_object_or_404
+from Articles.models import ArticlesModel
 
 
 class fieldsMixin():
@@ -27,12 +27,13 @@ class FormValidMixin():
             self.obj.status_Article = 'd'
         return super().form_valid(form)                             
 
-# class AuthorAccessMixin():
-#     def dispatch(self , request ,pk , *args , **kwargs):
-#         article = get_object_or_404(blognewsuni, pk=pk)
+# دسترسی کاربران ادیت کردن مقاله
+class AuthorAccessMixin():
+    def dispatch(self , request ,pk , *args , **kwargs):
+        article = get_object_or_404(ArticlesModel, pk=pk)
 
-#         if article.auther == request.user and article.status == 'D' or request.user.is_superuser:
-#             return super().dispatch(request , *args , **kwargs)      
-#         else:
-#             raise Http404("you no no")
+        if article.author == request.user and article.status_Article == 'd' or request.user.is_superuser:
+            return super().dispatch(request , *args , **kwargs)      
+        else:
+            raise Http404("شما نمیتوانید این صفحه را ببینید")
 

@@ -39,8 +39,16 @@
                                         <td>
                                             <input type="checkbox" class="checkboxes" value="1" />
                                         </td>
-                                        <td>{{ article.title_Article|truncatewords:10 }}</td>
-                                        <td class="hidden-phone"><a href="mailto:jhone-doe@gmail.com">{{ article.author.get_full_name }}</a></td>
+                        {% comment %} نویسندگان فقط میتوانند مقاله های پیش نویس را ویرایش کنند {% endcomment %}
+                                    {% if article.status_Article == 'd' or user.is_superuser %} 
+                                       <td>
+                                        <a href="{% url "ACCOUNT:update_article" article.pk %}" > {{ article.title_Article|truncatewords:10 }} </a> 
+                                       </td>
+                                       {% else %}
+                                       <td>{{ article.title_Article|truncatewords:10 }}</td>
+                                    {% endif %}
+                        {% comment %}  {% endcomment %}
+                                       <td class="hidden-phone"><a href="mailto:jhone-doe@gmail.com">{{ article.author.get_full_name }}</a></td>
                                         <td class="hidden-phone"> <img width=100 height=75 style='border-radius: 5px;' src="{{ article.image_Article.url }}"> </td>
                                         <td class="hidden-phone">{{ article.slug_Article }}</td>
                                         
