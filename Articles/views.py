@@ -6,7 +6,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic import TemplateView
 from account.models import User
 # from .forms import ArticlesModelForm
-
+from account.mixins import AuthorAccessMixin
 
 
 
@@ -171,6 +171,12 @@ class detail_article(DetailView):
 
 
 
+# صحفه  مربوطه هر مقاله وقتی پیش نویس است برای ادمین ها نمایش داده شود
+class detail_article_preview(AuthorAccessMixin , DetailView):
+    template_name = "Articles/detail_article.html"
+    def get_object(self):
+        pk = self.kwargs.get('pk')
+        return get_object_or_404(ArticlesModel , pk=pk )
 
 
 

@@ -59,23 +59,32 @@
 
                                         <td class="hidden-phone">
 
+
+
+
                                             {% if article.status_Article == "p" %}
-                                            
                                             <span class="label label-success">منتشر شد</span> </br>
                                             <a class="label label-primary" target="_blank" href="{% url "Articles_app_name:article_name" article.slug_Article %}" > نمایش در سایت </a>
-                                            
-                                            
-                                            {% elif article.status_Article == "r" %}
-                                            
-                                            <span class="label label-danger">رد قوانین</span>
-                                            <a class="label label-primary" target="_blank" href="{% url "Articles_app_name:article_name" article.slug_Article %}" > نمایش در سایت </a>
+                                            {% comment %} {% else %}
+                                            <a class="btn btn-secondary" target="_blank" href="{% url "Articles_app_name:article_preview" article.pk %}" >پیش  نمایش در سایت </a> {% endcomment %}
+                                            {% endif %}
 
-                                            {% elif article.status_Article == "d" %}
-                                            
+
+                                            {% if article.status_Article == "r" %}
+                                            <span class="label label-danger">رد قوانین</span>
+                                            {% comment %} <a class="label label-primary" target="_blank" href="{% url "Articles_app_name:article_name" article.slug_Article %}" > نمایش در سایت </a> {% endcomment %}
+                                            {% endif %}
+
+
+                                            {% if article.status_Article == "d" %}
                                             <span class="label label-warning">پیش نویس</span>
-                                            <a class="label label-primary" target="_blank" href="{% url "Articles_app_name:article_name" article.slug_Article %}" > نمایش در سایت </a>
+                                            {% comment %} <a class="label label-primary" target="_blank" href="{% url "Articles_app_name:article_name" article.slug_Article %}" > نمایش در سایت </a>  {% endcomment %}
+                                            <a class="btn btn-secondary" target="_blank" href="{% url "Articles_app_name:article_preview" article.pk %}" >پیش  نمایش در سایت </a>
 
                                             {% endif %}
+
+
+
 
                                             {% comment %} حذف یک مقاله فقط و فقط توسط سوپریوزرها پاک میشود نه توسط نویسندگان {% endcomment %}
                                             {% if user.is_superuser %}
