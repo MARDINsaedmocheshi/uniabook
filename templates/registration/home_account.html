@@ -43,15 +43,20 @@
                                         <td>
                                             <input type="checkbox" class="checkboxes" value="1" />
                                         </td>
+
+
                         {% comment %} نویسندگان فقط میتوانند مقاله های پیش نویس را ویرایش کنند {% endcomment %}
-                                    {% if article.status_Article == 'd' or user.is_superuser %} 
-                                       <td>
+                                  {% comment %} {% if article.status_Article == 'd' or user.is_superuser %}  {% endcomment %}
+                                    {% if article.status_Article in 'jd'|make_list or user.is_superuser %} 
+                                        <td>
                                         <a href="{% url "ACCOUNT:update_article" article.pk %}" > {{ article.title_Article|truncatewords:10 }} </a> 
                                        </td>
                                        {% else %}
                                        <td>{{ article.title_Article|truncatewords:10 }}</td>
                                     {% endif %}
                         {% comment %}  {% endcomment %}
+
+
                                        <td class="hidden-phone"><a href="mailto:jhone-doe@gmail.com">{{ article.author.get_full_name }}</a></td>
                                         <td class="hidden-phone"> <img width=100 height=75 style='border-radius: 5px;' src="{{ article.image_Article.url }}"> </td>
                                         <td class="hidden-phone">{{ article.slug_Article }}</td>
@@ -65,23 +70,41 @@
                                             {% if article.status_Article == "p" %}
                                             <span class="label label-success">منتشر شد</span> </br>
                                             <a class="label label-primary" target="_blank" href="{% url "Articles_app_name:article_name" article.slug_Article %}" > نمایش در سایت </a>
-                                            {% comment %} {% else %}
-                                            <a class="btn btn-secondary" target="_blank" href="{% url "Articles_app_name:article_preview" article.pk %}" >پیش  نمایش در سایت </a> {% endcomment %}
+                                            
+                                            {% elif article.status_Article == "i" %}
+                                            <span class="label label-primary" >در حال بررسی</span> </br>
+
+
+                                                {% if user.is_superuser %}
+                                                    <a class="btn btn-secondary" target="_blank" href="{% url "Articles_app_name:article_preview" article.pk %}" >پیش  نمایش در سایت </a>
+                                                {% endif %}
+
+                                            {% else %}
+                                                {% if article.status_Article == "d" %}
+                                                    <span class="label label-warning">پیش نویس</span>
+                                                        {% else %}
+                                                            <span class="label label-warning">برگشت داده شده</span>
+                                                {% endif %}
+                                            
+                                            <a class="btn btn-secondary" target="_blank" href="{% url "Articles_app_name:article_preview" article.pk %}" >پیش  نمایش در سایت </a> 
+                                                
+           
                                             {% endif %}
 
 
-                                            {% if article.status_Article == "r" %}
+                                            {% comment %}  {% if article.status_Article == "r" %}
                                             <span class="label label-danger">رد قوانین</span>
-                                            {% comment %} <a class="label label-primary" target="_blank" href="{% url "Articles_app_name:article_name" article.slug_Article %}" > نمایش در سایت </a> {% endcomment %}
-                                            {% endif %}
+                                             <a class="label label-primary" target="_blank" href="{% url "Articles_app_name:article_name" article.slug_Article %}" > نمایش در سایت </a> 
+                                            {% endif %}{% endcomment %}
 
 
-                                            {% if article.status_Article == "d" %}
+                                          {% comment %}  {% if article.status_Article == "d" %}
                                             <span class="label label-warning">پیش نویس</span>
-                                            {% comment %} <a class="label label-primary" target="_blank" href="{% url "Articles_app_name:article_name" article.slug_Article %}" > نمایش در سایت </a>  {% endcomment %}
+                                             <a class="label label-primary" target="_blank" href="{% url "Articles_app_name:article_name" article.slug_Article %}" > نمایش در سایت </a> 
                                             <a class="btn btn-secondary" target="_blank" href="{% url "Articles_app_name:article_preview" article.pk %}" >پیش  نمایش در سایت </a>
-
-                                            {% endif %}
+                                            {% else %}
+                                            <span class="label label-warning">برگشت داده شده</span>
+                                            {% endif %} {% endcomment %}
 
 
 

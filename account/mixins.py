@@ -27,15 +27,28 @@ class FormValidMixin():
             self.obj.status_Article = 'd'
         return super().form_valid(form)                             
 
+
+
+
+
+
+
 # دسترسی کاربران ادیت کردن مقاله
 class AuthorAccessMixin():
     def dispatch(self , request ,pk , *args , **kwargs):
         article = get_object_or_404(ArticlesModel, pk=pk)
 
-        if article.author == request.user and article.status_Article == 'd' or request.user.is_superuser:
+        if article.author == request.user and article.status_Article in ['j' , 'd'] or request.user.is_superuser:
             return super().dispatch(request , *args , **kwargs)      
         else:
             raise Http404("شما نمیتوانید این صفحه را ببینید")
+
+
+
+
+
+
+
 
 # دسترسی کاربران حذف کردن مقاله
 class superuserAccessMixin():
