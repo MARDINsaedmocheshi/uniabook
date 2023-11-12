@@ -7,15 +7,15 @@ class fieldsMixin():
     def dispatch(self , request , *args , **kwargs):
         if request.user.is_superuser:
             self.fields = [
-                'author' , 'image_Article' , 'File_Article' , 'title_Article' , 'slug_Article', 'Abstract_Article', 'Key_word_Article', 'Introduction_Article', 'Body_or_text_Article', 'Result_Article', 'References_Article', 'category_Article', 'Article_type_Article', 'is_sale_Article' , 'status_Article'
+                'author' , 'image_Article' , 'File_Article' , 'title_Article' ,'is_special', 'slug_Article', 'Abstract_Article', 'Key_word_Article', 'Introduction_Article', 'Body_or_text_Article', 'Result_Article', 'References_Article', 'category_Article', 'Article_type_Article', 'is_sale_Article' , 'status_Article'
                             ]
-        elif request.user.is_author:
+        elif request.user.is_author: #نویسندگان
             self.fields = [
-                'image_Article' , 'File_Article' , 'title_Article' , 'slug_Article', 'Abstract_Article', 'Key_word_Article', 'Introduction_Article', 'Body_or_text_Article', 'Result_Article', 'References_Article', 'category_Article', 'Article_type_Article', 'is_sale_Article'
+                'image_Article' , 'File_Article' , 'title_Article' ,'is_special', 'slug_Article', 'Abstract_Article', 'Key_word_Article', 'Introduction_Article', 'Body_or_text_Article', 'Result_Article', 'References_Article', 'category_Article', 'Article_type_Article', 'is_sale_Article'
                             ]
         else:
             raise Http404("شما نمیتوانید این صفحه را ببینید")
-        return super().dispatch(request , *args , **kwargs)      
+        return super().dispatch(request , *args , **kwargs)
 
 class FormValidMixin():
     def form_valid(self ,form):

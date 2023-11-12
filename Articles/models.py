@@ -220,6 +220,8 @@ class ArticlesModel(models.Model):
   status_Article = models.CharField(max_length=1,choices=STATUS_CHOICES,default = 'd', verbose_name = "  وضعیت انتشار مقاله" )
   Article_type_Article = models.CharField(max_length=3,choices=Article_CHOICES, verbose_name = " نوع مقاله" )
   is_sale_Article = models.BooleanField(default=False, verbose_name = "تخفیف ویژه")
+  is_special = models.BooleanField(default=False, verbose_name="مقاله ویژه")
+
 
   class Meta:
     verbose_name_plural = "مقاله ها"

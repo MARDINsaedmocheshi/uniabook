@@ -281,7 +281,15 @@ October 09, 2023
 
       <div class="cart-icon text-center">
         <a href="Articles_file/{{ object.File_Article }}" download> <i class="fa fa-download"></i>{{ article.File_Article }}</a>
+        {% if object.is_special %}
+              {% if user.authenticated and user.is_special_user or user == object.author or user.is_superuser %}  {% comment %} یوزر وارد شده {% endcomment %}
+                    <p> {{object.Body_or_text_Article|safe}} </p>
+                    {% else %}
+                    <p>این مقاله ویژه است و برای مشاهده ان باید <a href="#">اشتراک ویژه</a>تهیه کنید 
+              {% endif %}
+        {% else %}
         <p> {{object.Body_or_text_Article|safe}} </p>
+        {% endif %}
       </div>
 
     </div>

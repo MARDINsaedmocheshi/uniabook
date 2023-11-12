@@ -20,6 +20,7 @@
             {% if user.is_superuser %}
             <div class="col-2">
                 {{ form.author|as_crispy_field }}
+                {{ form.is_special|as_crispy_field }}
               </div>
 
             <div class="col-8">

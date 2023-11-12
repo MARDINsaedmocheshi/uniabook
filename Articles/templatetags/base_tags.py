@@ -18,12 +18,13 @@ def category_navbar():# توی فایل index_Articles.html خط 324 ازش اس
     }
 
 @register.inclusion_tag("registration/partials/link.html")
-def link(request, link_name , content):
+def link(request, link_name , content , classes):
     return {
         # مربوط به اکتیو بودن منوها
          "request" : request,
          "link_name" : link_name ,
          "link" :  "ACCOUNT:{}".format(link_name),
          "content" : content,
+         "classes" : classes,
 
     }

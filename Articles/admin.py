@@ -121,7 +121,7 @@ admin.site.title_Sliedr = 'مدیریت پیغام ها'
 
 # تنظیمات مقالات 
 class ArticlesAdmin(admin.ModelAdmin):
-    list_display = ('title_Article' , 'author', 'small_picture' , 'slug_Article','Body_or_text_Article', 'status_Article', 'jpublish' , 'updated_Article', 'created_Article', 'category_to_str')
+    list_display = ('title_Article' , 'author', 'small_picture' ,'is_special', 'slug_Article','Body_or_text_Article', 'status_Article', 'jpublish' , 'updated_Article', 'created_Article', 'category_to_str')
     list_filter = (['publish_Article' ,'status_Article', 'author'] )
     search_fields = ('title_Article' ,'Body_or_text_Article'  )
     prepopulated_fields = {'slug_Article': ('title_Article',)}
