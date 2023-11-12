@@ -5,6 +5,11 @@ from django.views.generic import ListView , CreateView , UpdateView , DeleteView
 from Articles.models import ArticlesModel
 from .mixins import fieldsMixin , FormValidMixin , AuthorAccessMixin , superuserAccessMixin
 from django.urls import reverse_lazy
+from .models import User
+
+
+
+
 
 # @login_required
 # def home_account(request):
@@ -35,3 +40,15 @@ class ArticleDeleteViewAccount(superuserAccessMixin , DeleteView):
     model = ArticlesModel
     success_url = reverse_lazy("ACCOUNT:home_account")
     template_name = "registration/articlesmodel_confirm_delete.html"
+
+
+class Profile(UpdateView):
+    model = User
+    template_name = "registration/profile.html"
+    fields = ['username','email','first_name','last_name','special_user','is_author']
+    success_url = reverse_lazy("ACCOUNT:profile")
+
+    def get_object(self):
+        return User.objects.get(pk = self.request.user.pk )
+
+

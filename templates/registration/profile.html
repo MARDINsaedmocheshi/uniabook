@@ -1,0 +1,50 @@
+
+{% extends "registration/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %} 
+
+  پروفایل کاربری 
+
+{% endblock title %}
+
+
+{% block main %}
+<div class="alert alert-primary" role="alert" style="text-align: center;">
+   پروفایل کاربری <span style="color:red;">{{user.get_full_name}} </span>
+  </div>
+    <form method="post" enctype="multipart/form-data" > {% csrf_token %}
+
+        <div class="row" style="text-align: right;">
+
+            <div class="col-6">
+                {{ form.username|as_crispy_field }}
+            </div>
+
+            <div class="col-6">
+                {{ form.email|as_crispy_field }}
+            </div>
+
+            <div class="col-6">
+                {{ form.first_name|as_crispy_field }}
+            </div>
+
+            <div class="col-6">
+                {{ form.last_name|as_crispy_field }}
+            </div>
+
+            <div class="col-6">
+                {{ form.special_user|as_crispy_field }}
+            </div>
+
+            <div class="col-6">
+                {{ form.is_author|as_crispy_field }}
+            </div>
+
+        </div>
+
+        <br>
+        <button class="btn btn-success">ویرایش اطلاعات</button>
+
+    </form>
+{% endblock main %}
