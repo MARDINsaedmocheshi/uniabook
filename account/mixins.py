@@ -1,5 +1,5 @@
 from django.http import Http404
-from django.shortcuts import  get_object_or_404
+from django.shortcuts import  get_object_or_404 , redirect
 from Articles.models import ArticlesModel
 
 
@@ -42,7 +42,7 @@ class AuthorAccessMixin():
             return super().dispatch(request , *args , **kwargs)      
         else:
             raise Http404("شما نمیتوانید این صفحه را ببینید")
-
+# در اینجا پرایمری کی رو میگیره و فقط برای یک نویسنده اعمال میشه 
 
 
 
@@ -58,3 +58,15 @@ class superuserAccessMixin():
             return super().dispatch(request , *args , **kwargs)      
         else:
             raise Http404("شما نمیتوانید این صفحه را ببینید")
+
+
+
+
+class AthorsAccessMixin():
+    def dispatch(self , request , *args , **kwargs):
+
+        if request.user.is_superuser or request.user.is_author:
+            return super().dispatch(request , *args , **kwargs)
+        else:
+            return redirect("ACCOUNT:profile")
+# در اینجا کل نویسندگان رو بررسی میکنیم که ایا دسترسی دارن یا نه
