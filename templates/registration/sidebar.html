@@ -2,109 +2,123 @@
 {% load base_tags %}
 
    <!--sidebar start-->
-      <aside>
-        <div id="sidebar"  class="nav-collapse ">
-            <!-- sidebar menu start-->
-            <ul class="sidebar-menu">
-                <li class="active">
-                    {% comment %} <a class="" href="">
-                        <i class="icon-dashboard"></i>
-                        <span>صفحه مدیریت سایت دانشگاه مقاله و کتاب</span>
-                    </a> {% endcomment %}
-                    <a class="" href="index.html">
-                        <i class="icon-dashboard"></i>
-                        <span>صفحه اصلی</span>
-                    </a>
-                </li>
-
-                <li class="sub-menu">
-                    <a href="javascript:;" class="">
-                        <i class="icon-book"></i>
-                        <span>مقالات</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub">
-
-                        {% comment %} <li class="fa fa-list  {% if request.resolver_match.url_name == 'home_account' %} active {% endif %} "><a class="" href="{% url "ACCOUNT:home_account" %}">لیست مقالات</a></li> {% endcomment %}
-
-                        {% link request 'home_account' 'لیست مقالات' 'icon-book' %}
-
-                        {% comment %} <li class="fa fa-edit {% if request.resolver_match.url_name == 'create_article' %} active {% endif %} "><a class="" href="{% url "ACCOUNT:create_article" %}">افزودن مقاله جدید</a></li> {% endcomment %}
-
-                        {% link request 'create_article' 'افزودن مقاله جدید' 'icon-cogs' %}
-                        
-                        {% comment %} برای پرو فایل میتونیم قطعه کد بالا رو هم واسش بنویسیم {% endcomment %}
-                        <li><a class="" href="{% url "ACCOUNT:profile" %}"><i class="icon-user"></i><span class="label label-primary pull-left r-activity">2</span> پروفایل</a>
-                        </li>
-        
-                    </ul>
-                </li>
 
 
-                {% comment %} <li class="sub-menu">
-                    <a href="javascript:;" class="">
-                        <i class="icon-cogs"></i>
-                        <span>کامنت ها</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub">
-                        <li><a class="" href="grids.html">گرید</a></li>
-                        <li><a class="" href="calendar.html">تقویم</a></li>
-                        <li><a class="" href="charts.html">چارت</a></li>
-                    </ul>
-                </li>
-                <li class="sub-menu">
-                    <a href="javascript:;" class="">
-                        <i class="icon-tasks"></i>
-                        <span>ابزارهای فرم</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub">
-                        <li><a class="" href="form_component.html">کامنت فرم</a></li>
-                        <li><a class="" href="form_wizard.html">فرم Wizard</a></li>
-                        <li><a class="" href="form_validation.html">ارزیابی فرم</a></li>
-                    </ul>
-                </li>
-                <li class="sub-menu">
-                    <a href="javascript:;" class="">
-                        <i class="icon-th"></i>
-                        <span>اطلاعات جدول</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub">
-                        <li><a class="" href="basic_table.html">جدول ساده</a></li>
-                        <li><a class="" href="dynamic_table.html">جدول داینامیک</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a class="" href="inbox.html">
-                        <i class="icon-envelope"></i>
-                        <span>ایمیل </span>
-                        <span class="label label-danger pull-right mail-info">2</span>
-                    </a>
-                </li>
-                <li class="sub-menu">
-                    <a href="javascript:;" class="">
-                        <i class="icon-glass"></i>
-                        <span>عناصر اضافی</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub">
-                        <li><a class="" href="blank.html">صفحه خالی</a></li>
-                        <li><a class="" href="profile.html">پروفایل</a></li>
-                        <li><a class="" href="invoice.html">فاکتور</a></li>
-                        <li><a class="" href="404.html">404 Error</a></li>
-                        <li><a class="" href="500.html">500 Error</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a class="" href="login.html">
-                        <i class="icon-user"></i>
-                        <span>صفحه ورود به سایت</span>
-                    </a>
-                </li> {% endcomment %}
-            </ul>
-            <!-- sidebar menu end-->
-        </div>
-    </aside>
+{% if user.is_superuser or user.is_author %}
+
+
+<aside>
+    <div id="sidebar"  class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu">
+            <li class="active">
+                {% comment %} <a class="" href="">
+                    <i class="icon-dashboard"></i>
+                    <span>صفحه مدیریت سایت دانشگاه مقاله و کتاب</span>
+                </a> {% endcomment %}
+                <a class="" href="index.html">
+                    <i class="icon-dashboard"></i>
+                    <span>صفحه اصلی</span>
+                </a>
+            </li>
+
+            <li class="sub-menu">
+                <a href="javascript:;" class="">
+                    <i class="icon-book"></i>
+                    <span>مقالات</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub">
+
+                    {% comment %} <li class="fa fa-list  {% if request.resolver_match.url_name == 'home_account' %} active {% endif %} "><a class="" href="{% url "ACCOUNT:home_account" %}">لیست مقالات</a></li> {% endcomment %}
+
+                    {% link request 'home_account' 'لیست مقالات' 'icon-book' %}
+
+                    {% comment %} <li class="fa fa-edit {% if request.resolver_match.url_name == 'create_article' %} active {% endif %} "><a class="" href="{% url "ACCOUNT:create_article" %}">افزودن مقاله جدید</a></li> {% endcomment %}
+
+                    {% link request 'create_article' 'افزودن مقاله جدید' 'icon-cogs' %}
+                    
+                    {% comment %} برای پرو فایل میتونیم قطعه کد بالا رو هم واسش بنویسیم {% endcomment %}
+                    <li><a class="" href="{% url "ACCOUNT:profile" %}"><i class="icon-user"></i><span class="label label-primary pull-left r-activity">2</span> پروفایل</a>
+                    </li>
+    
+                </ul>
+            </li>
+
+
+            {% comment %} <li class="sub-menu">
+                <a href="javascript:;" class="">
+                    <i class="icon-cogs"></i>
+                    <span>کامنت ها</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub">
+                    <li><a class="" href="grids.html">گرید</a></li>
+                    <li><a class="" href="calendar.html">تقویم</a></li>
+                    <li><a class="" href="charts.html">چارت</a></li>
+                </ul>
+            </li>
+            <li class="sub-menu">
+                <a href="javascript:;" class="">
+                    <i class="icon-tasks"></i>
+                    <span>ابزارهای فرم</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub">
+                    <li><a class="" href="form_component.html">کامنت فرم</a></li>
+                    <li><a class="" href="form_wizard.html">فرم Wizard</a></li>
+                    <li><a class="" href="form_validation.html">ارزیابی فرم</a></li>
+                </ul>
+            </li>
+            <li class="sub-menu">
+                <a href="javascript:;" class="">
+                    <i class="icon-th"></i>
+                    <span>اطلاعات جدول</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub">
+                    <li><a class="" href="basic_table.html">جدول ساده</a></li>
+                    <li><a class="" href="dynamic_table.html">جدول داینامیک</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="" href="inbox.html">
+                    <i class="icon-envelope"></i>
+                    <span>ایمیل </span>
+                    <span class="label label-danger pull-right mail-info">2</span>
+                </a>
+            </li>
+            <li class="sub-menu">
+                <a href="javascript:;" class="">
+                    <i class="icon-glass"></i>
+                    <span>عناصر اضافی</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub">
+                    <li><a class="" href="blank.html">صفحه خالی</a></li>
+                    <li><a class="" href="profile.html">پروفایل</a></li>
+                    <li><a class="" href="invoice.html">فاکتور</a></li>
+                    <li><a class="" href="404.html">404 Error</a></li>
+                    <li><a class="" href="500.html">500 Error</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="" href="login.html">
+                    <i class="icon-user"></i>
+                    <span>صفحه ورود به سایت</span>
+                </a>
+            </li> {% endcomment %}
+        </ul>
+        <!-- sidebar menu end-->
+    </div>
+</aside>
+
+
+
+
+{% endif %}
+
+
+
+
     <!--sidebar end-->
