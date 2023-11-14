@@ -285,6 +285,7 @@ October 09, 2023
               {% if user.authenticated and user.is_special_user or user == object.author or user.is_superuser %}  {% comment %} یوزر وارد شده {% endcomment %}
                     <p> {{object.Body_or_text_Article|safe}} </p>
                     {% else %}
+                    <p> {{object.Body_or_text_Article|safe|truncatewords:10}} </p>
                     <p>این مقاله ویژه است و برای مشاهده ان باید <a href="#">اشتراک ویژه</a>تهیه کنید 
               {% endif %}
         {% else %}

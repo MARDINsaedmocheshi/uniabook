@@ -368,6 +368,11 @@ October 09, 2023
 
                 <div class="card-body text-center">
                   <div class="card-title">
+
+                    {% if article.is_special %}
+                      <a class="badge badge-danger" style="color:white;">این یک مقاله ویژه است</a>
+                    {% endif %}
+
                     <a href="#">{{ article.title_Article }}</a>
                   </div>
                   <strong dir="rtl" >{{ article.jpublish }}</strong>
