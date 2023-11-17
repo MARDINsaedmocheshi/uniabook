@@ -4,6 +4,9 @@ from django.utils import timezone
 
 # Create your models here.
 class User(AbstractUser):
+
+    email = models.EmailField(unique=True, max_length=254 , verbose_name="ایمیل")
+
     is_author= models.BooleanField(default=False, verbose_name="وضعیت نویسندگی")
     special_user = models.DateTimeField(default=timezone.now, verbose_name="کاربر ویژه تا")
 

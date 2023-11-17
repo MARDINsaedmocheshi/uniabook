@@ -27,7 +27,8 @@
 
             <div class="col-12">
                 <label class="my-4"> گذرواژه : </label>
-                <span> برای تغییر گذرواژه <a href="{% url "ACCOUNT:password_change" %}"> کلیک </a> کنید </span>
+                {% comment %} <span> برای تغییر گذرواژه <a href="{% url "ACCOUNT:password_change" %}"> کلیک </a> کنید </span> {% endcomment %}
+                <span> برای تغییر گذرواژه <a href="{% url "password_change" %}"> کلیک </a> کنید </span>
             </div>
 
             <div class="col-6">

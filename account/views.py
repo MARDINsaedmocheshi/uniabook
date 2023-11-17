@@ -71,5 +71,5 @@ class Login(LoginView):
             return reverse_lazy("ACCOUNT:profile")
 
 
-class PasswordChange(PasswordChangeView):
-    success_url = reverse_lazy("ACCOUNT:password_change_done")
+# class PasswordChange(PasswordChangeView):
+#     success_url = reverse_lazy("ACCOUNT:password_change_done")

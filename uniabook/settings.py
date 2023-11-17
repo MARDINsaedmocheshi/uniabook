@@ -4,8 +4,11 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 LOGIN_REDIRECT_URL = "ACCOUNT:home_account"
-LOGOUT_REDIRECT_URL = "ACCOUNT:login"
-LOGIN_URL = "ACCOUNT:login"
+
+# LOGOUT_REDIRECT_URL = "ACCOUNT:login"
+# LOGIN_URL = "ACCOUNT:login"
+LOGOUT_REDIRECT_URL = "login"
+LOGIN_URL = "login"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -133,3 +136,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 AUTH_USER_MODEL = "account.User"
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"

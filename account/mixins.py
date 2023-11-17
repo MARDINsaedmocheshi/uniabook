@@ -75,6 +75,7 @@ class AthorsAccessMixin():
             else:
                 return redirect("ACCOUNT:profile")
         else:
-            return redirect("ACCOUNT:login")
+            # return redirect("ACCOUNT:login")
+            return redirect("login")
 
 # در اینجا کل نویسندگان رو بررسی میکنیم که ایا دسترسی دارن یا نه

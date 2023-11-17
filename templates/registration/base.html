@@ -266,7 +266,8 @@
 
                     <li><a  href="{% url "ACCOUNT:home_account" %}"><span class="username" style="color:blue;">صفحه اصلی</span> </a></li>
                     <li><a target="_blank" href="{% url "Articles_app_name:Articles_name" %}"><span class="username">نمایش صفحه مقالات سایت </span></a></li>
-                    <li><a href="{% url "ACCOUNT:logout" %}"><i class="icon-key"></i> خروج</a></li>
+                    {% comment %} <li><a href="{% url "ACCOUNT:logout" %}"><i class="icon-key"></i> خروج</a></li> {% endcomment %}
+                    <li><a href="{% url "logout" %}"><i class="icon-key"></i> خروج</a></li>
                     {% comment %} <li><a  href=""><span class="username">  {{request.resolver_match}} </span></a></li>
                     <li><a  href=""><span class="username">  {{request.resolver_match.url_name}} </span></a></li> {% endcomment %}
 
@@ -283,7 +284,8 @@
                             <li><a href="#"><i class="icon-cog"></i> تنظیمات</a></li>
                             <li><a href="#"><i class="icon-bell-alt"></i> اعلام ها</a></li>
 
-                            <li><a href="{% url "ACCOUNT:logout" %}"><i class="icon-key"></i> خروج</a></li>
+                            <li><a href="{% url "logout" %}"><i class="icon-key"></i> خروج</a></li>
+                            {% comment %} <li><a href="{% url "ACCOUNT:logout" %}"><i class="icon-key"></i> خروج</a></li> {% endcomment %}
                         </ul>
                     </li>
                     <!-- user login dropdown end -->
