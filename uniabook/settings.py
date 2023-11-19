@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'crispy_forms',
     'ckeditor',
+    'django_gravatar',
  
 ]
 
