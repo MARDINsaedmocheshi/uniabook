@@ -174,6 +174,12 @@ class SliderTop(models.Model):
 # ------------------------------------------------------------------------------------------------
 
 
+class IPAddress(models.Model):
+  ip_address = models.GenericIPAddressField(verbose_name="آدرس آی پی")
+
+
+# ------------------------------------------------------------------------------------------------
+
 # Articles | مقالات 
 class ArticlesModel(models.Model):
   STATUS_CHOICES = (
@@ -230,6 +236,9 @@ class ArticlesModel(models.Model):
   is_sale_Article = models.BooleanField(default=False, verbose_name = "تخفیف ویژه")
   is_special = models.BooleanField(default=False, verbose_name="مقاله ویژه")
   comments = GenericRelation(Comment)
+  hits = models.ManyToManyField(IPAddress, blank=True , related_name="hits" , verbose_name="بازدید ها")
+
+
 
   class Meta:
     verbose_name_plural = "مقاله ها"

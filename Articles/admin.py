@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category , AlertTop , SliderTop , ArticlesModel
+from .models import Category , AlertTop , SliderTop , ArticlesModel , IPAddress
 
 
 
@@ -131,5 +131,6 @@ class ArticlesAdmin(admin.ModelAdmin):
 
 
 admin.site.register(ArticlesModel, ArticlesAdmin)
+admin.site.register(IPAddress)
 admin.site.title_Article = 'مدیریت  مقاله ها'
 # --------------------------------------------------

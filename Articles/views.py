@@ -167,7 +167,13 @@ class detail_article(DetailView):
     template_name = "Articles/detail_article.html"
     def get_object(self):
         slug = self.kwargs.get('slug')
-        return get_object_or_404(ArticlesModel , slug_Article=slug , status_Article="p")
+        article = get_object_or_404(ArticlesModel , slug_Article=slug , status_Article="p")
+
+        ip_address = self.request.user.ip_address
+        if ip_address not in article.hits.all() :
+            article.hits.add(ip_address)
+
+        return article
 
 
 
