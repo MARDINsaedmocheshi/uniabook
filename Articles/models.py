@@ -6,6 +6,14 @@ from account.models import User
 from extensions.utils import jalali_convert
 from django.urls import reverse
 from ckeditor.fields import RichTextField
+from django.contrib.contenttypes.fields import GenericRelation
+from comment.models import Comment
+
+
+
+
+
+
 
 # my managers Article
 class ArticleManagers(models.Manager):
@@ -221,7 +229,7 @@ class ArticlesModel(models.Model):
   Article_type_Article = models.CharField(max_length=3,choices=Article_CHOICES, verbose_name = " نوع مقاله" )
   is_sale_Article = models.BooleanField(default=False, verbose_name = "تخفیف ویژه")
   is_special = models.BooleanField(default=False, verbose_name="مقاله ویژه")
-
+  comments = GenericRelation(Comment)
 
   class Meta:
     verbose_name_plural = "مقاله ها"

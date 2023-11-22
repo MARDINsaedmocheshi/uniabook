@@ -9,6 +9,8 @@ from account.views import Login , register , activate
 urlpatterns = [
     path('admin/', admin.site.urls),
 
+    path('comment/', include('comment.urls')),
+
     # صفحه اصلی 
     path('', include('MainPage.urls')),
     # صفحه مقالات 
@@ -25,6 +27,8 @@ urlpatterns = [
     path('activate/<uidb64>/<token>/', activate , name='activate'),
 
     path('', include('django.contrib.auth.urls')), #لاگ اوت و سایر مباحث ثبت نام در اینجاست
+
+    path('ratings/', include('star_ratings.urls', namespace='ratings')),
 
 ]
 
