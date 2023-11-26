@@ -236,7 +236,7 @@ class ArticlesModel(models.Model):
   is_sale_Article = models.BooleanField(default=False, verbose_name = "تخفیف ویژه")
   is_special = models.BooleanField(default=False, verbose_name="مقاله ویژه")
   comments = GenericRelation(Comment)
-  hits = models.ManyToManyField(IPAddress, blank=True , related_name="hits" , verbose_name="بازدید ها")
+  hits = models.ManyToManyField(IPAddress, through="ArticleHit", blank=True , related_name="hits" , verbose_name="بازدید ها")
 
 
 
@@ -270,3 +270,10 @@ class ArticlesModel(models.Model):
 
   objects = ArticleManagers()
 # ------------------------------------------------------------------------------------------------
+
+
+
+class ArticleHit(models.Model):
+  article = models.ForeignKey(ArticlesModel, on_delete=models.CASCADE)
+  ip_address = models.ForeignKey(IPAddress, on_delete=models.CASCADE)
+  created = models.DateTimeField(auto_now_add=True) 
