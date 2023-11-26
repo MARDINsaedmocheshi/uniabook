@@ -386,7 +386,7 @@ October 09, 2023
                     <a href="Articles_file/{{ article.File_Article }}" download> <i class="fa fa-download"></i></a> 
                     
                   </div>
-
+                
                 </div>
 
                 <nav aria-label="breadcrumb">
@@ -402,6 +402,10 @@ October 09, 2023
                 <div>
                   {% for cat in article.category_Article.all %}
                   <a  href="">{{ cat.title_category }}</a>
+                  <div> 
+                    بازدید ها : {{article.hits.count}}
+                  </div>
+
                   {% endfor %}
                 </div>
             </div>
