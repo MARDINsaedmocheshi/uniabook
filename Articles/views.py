@@ -7,8 +7,8 @@ from django.views.generic import TemplateView
 from account.models import User
 # from .forms import ArticlesModelForm
 from account.mixins import AuthorAccessMixin
-from django.db.models import Count , Q
-from datetime import datetime , timedelta
+# from django.db.models import Count , Q
+# from datetime import datetime , timedelta
 
 
 
@@ -48,9 +48,15 @@ from datetime import datetime , timedelta
 #     return render(request, "Articles/index_Articles.html", cotext)
 # -----------------------------------------------
 class Articles_view(ListView):
-    last_month = datetime.today() - timedelta(days=30)
-    queryset = ArticlesModel.objects.published().order_by('-publish_Article').annotate(count=Count('hits', filter=Q(articlehit__created__gt=last_month))).order_by('-count', '-publish_Article')[:5]
+    queryset = ArticlesModel.objects.published().order_by('-publish_Article')
     paginate_by = 5
+
+    # def get_context_data(self, **kwargs):
+        # last_month = datetime.today() - timedelta(days=30)
+        # context = super().get_context_data(**kwargs)
+        # context["popular_articles"] =  #در فایل تمپلت تگها
+        # return context
+
 
 # ------------------------------------------
 

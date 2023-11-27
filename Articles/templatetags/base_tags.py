@@ -1,5 +1,7 @@
 from django import template
-from ..models import Category
+from ..models import Category , ArticlesModel
+from django.db.models import Count , Q
+from datetime import datetime , timedelta
 
 
 register = template.Library()
@@ -26,5 +28,17 @@ def link(request, link_name , content , classes):
          "link" :  "ACCOUNT:{}".format(link_name),
          "content" : content,
          "classes" : classes,
+
+    }
+
+
+
+
+@register.inclusion_tag("registration/partials/popular_articles.html")
+def popular_articles(): # توی فایل popular_articles.html   ازش استفاده کرده ام
+    last_month = datetime.today() - timedelta(days=30)
+    return {
+        # دسته بندی ها
+         "popular_articles" : ArticlesModel.objects.published().order_by('-publish_Article').annotate(count=Count('hits', filter=Q(articlehit__created__gt=last_month))).order_by('-count', '-publish_Article')[:5]
 
     }
