@@ -2,7 +2,7 @@ from django import template
 from ..models import Category , ArticlesModel
 from django.db.models import Count , Q
 from datetime import datetime , timedelta
-
+from django.contrib.contenttypes.models import ContentType
 
 register = template.Library()
 
@@ -34,11 +34,23 @@ def link(request, link_name , content , classes):
 
 
 
-@register.inclusion_tag("registration/partials/popular_articles.html")
-def popular_articles(): # توی فایل popular_articles.html   ازش استفاده کرده ام
+@register.inclusion_tag("registration/partials/sidebar.html")
+def popular_articles(): # توی فایل sidebar.html   ازش استفاده کرده ام
     last_month = datetime.today() - timedelta(days=30)
     return {
         # دسته بندی ها
-         "popular_articles" : ArticlesModel.objects.published().order_by('-publish_Article').annotate(count=Count('hits', filter=Q(articlehit__created__gt=last_month))).order_by('-count', '-publish_Article')[:5]
+         "articles" : ArticlesModel.objects.published().order_by('-publish_Article').annotate(count=Count('hits', filter=Q(articlehit__created__gt=last_month))).order_by('-count', '-publish_Article')[:5],
+         "title" : "مقالات پر بازدید ماه"
+    }
 
+
+@register.inclusion_tag("registration/partials/sidebar.html")
+def hot_articles(): # توی فایل .html   ازش استفاده کرده ام
+    last_month = datetime.today() - timedelta(days=30)
+    # content_type_id = user_type = ContentType.objects.get(app_label='Articles', model='ArticlesModel').id
+    return {
+        # دسته بندی ها
+         "articles" : ArticlesModel.objects.published().order_by('-publish_Article').annotate(count=Count('comments', filter=Q(comments__posted__gt=last_month) and Q(comments__content_type_id=13))).order_by('-count', '-publish_Article')[:5],
+        #  "articles" : ArticlesModel.objects.published().order_by('-publish_Article').annotate(count=Count('comments', filter=Q(comments__posted__gt=last_month) and Q(comments__content_type_id=content_type_id))).order_by('-count', '-publish_Article')[:5],
+         "title" : "مقالات داغ ما"
     }

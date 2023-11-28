@@ -1,10 +1,11 @@
 
           <div class="shop-p1-title">  
-            <h3>مقالات پر بازدید ماه</h3>
+            {% comment %} <h3>مقالات پر بازدید ماه</h3> {% endcomment %}
+            <h3>{{title}}</h3>
             <div class="heading-border-light"></div> 
           </div>
           <div class="list-group text-center">
-            {% for a in popular_articles %}
+            {% for a in articles %}
             <a href="{% url "Articles_app_name:article_name" a.slug_Article %}" class="list-group-item">{{ a.title_Article }}</a>
             {% endfor %}
           </div>
