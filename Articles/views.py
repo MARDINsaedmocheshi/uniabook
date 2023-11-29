@@ -7,7 +7,7 @@ from django.views.generic import TemplateView
 from account.models import User
 # from .forms import ArticlesModelForm
 from account.mixins import AuthorAccessMixin
-# from django.db.models import Count , Q
+from django.db.models import  Q
 # from datetime import datetime , timedelta
 
 
@@ -212,4 +212,22 @@ class AuthorList(ListView):
         context = super().get_context_data(**kwargs)
         # context["auther"] = get_object_or_404(auther.objects.active(), slug_category=slug)
         context["author"] = author
+        return context
+
+
+
+
+
+# -----------------------------------------------
+class SearchList(ListView):
+    paginate_by = 2
+    template_name = "Articles/search_list.html"
+
+    def get_queryset(self):
+        search = self.request.GET.get('q')
+        return ArticlesModel.objects.filter(Q(Body_or_text_Article__icontains=search) | Q(title_Article__icontains=search))
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["search"] = self.request.GET.get('q')
         return context
