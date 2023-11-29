@@ -17,7 +17,7 @@ October 09, 2023
 {% load static %}
 {% load base_tags %}
 {% load ratings %}
-
+{% load humanize %}
 
 
 <!DOCTYPE html>
@@ -397,7 +397,10 @@ October 09, 2023
                     <a href="#">{{ article.title_Article }}</a>
                   </div>
                   <strong dir="rtl" >{{ article.jpublish }}</strong>
-
+                </hr><br>
+                <div style="text-align: left;">
+                  <p >{{ article.publish_Article|naturaltime }}</p>
+                </div>
                   <div class="cart-icon text-center">
                     <a href="Articles_file/{{ article.File_Article }}" download> <i class="fa fa-download"></i></a> 
                     

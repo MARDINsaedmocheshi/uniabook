@@ -20,7 +20,7 @@ October 09, 2023
 {% load comment_tags %} {# Loading the template tag #}
 {% comment %} {% include_static %} {% endcomment %}
 {% load ratings %}
-
+{% load humanize %}
 
 
 <!DOCTYPE html>
@@ -285,7 +285,8 @@ October 09, 2023
       <div class="card-title">
         <a href="#">{{ object.title_Article }}</a>
       </div>
-      <strong>{{ object.jpublish }}</strong>
+      <strong>{{ object.jpublish }}</strong> </hr><br>
+      <strong>{{ object.publish_Article|naturaltime }}</strong>
 
       <div class="cart-icon text-center">
         <a href="Articles_file/{{ object.File_Article }}" download> <i class="fa fa-download"></i>{{ article.File_Article }}</a>
